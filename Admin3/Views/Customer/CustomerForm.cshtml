@@ -1,0 +1,83 @@
+﻿@{
+    ViewData["Title"] = "Customer Form";
+}
+@model Admin3.Models.CustomerModel;
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Customer Form</h5>
+
+        <!-- Multi Columns Form -->
+        <form asp-controller="Customer" asp-action="CustomerSave" class="row g-3">
+            <div class="col-md-12">
+                <label asp-for="CustomerName" for="inputEmail5" class="form-label">CustomerName</label>
+                <input asp-for="CustomerName" type="text" placeholder="Enter CustomerName" class="form-control" id="inputEmail5">
+                <span class="text-danger" asp-validation-for="CustomerName"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="HomeAddress" for="inputCity" class="form-label">HomeAddress </label>
+                <input asp-for="HomeAddress" placeholder="ENter HomeAddress" type="text" class="form-control" id="inputCity">
+                <span class="text-danger" asp-validation-for="HomeAddress"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Email" for="inputState" class="form-label">Email</label>
+                <input asp-for="Email" placeholder="Enter Email" type="email" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="MobileNO" for="inputState" class="form-label">MobileNo</label>
+                <input asp-for="MobileNO" type="text" class="form-control" id="inputZip" placeholder="Enter MobileNo">
+                <span class="text-danger" asp-validation-for="MobileNO"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="GST_NO" for="inputState" class="form-label">GSTNO</label>
+                <input asp-for="GST_NO" placeholder="Enter GST NO." type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="GST_NO"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="CityName" for="inputState" class="form-label">City Name</label>
+                <input asp-for="CityName" placeholder="Enter CityName" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="CityName"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="PinCode" for="inputState" class="form-label">PinCode</label>
+                <input asp-for="PinCode" placeholder="Enter Pincode" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="PinCode"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="NetAmount" for="inputState" class="form-label">NetAmount</label>
+                <input asp-for="NetAmount" placeholder="Enter NetAmount" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="NetAmount"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="UserID" for="inputState" class="form-label">User ID</label>
+                <select asp-for="UserID" id="inputState" class="form-select">
+                    <option value="">Chose User Id</option>
+                    @foreach (var i in ViewBag.userlist)
+                    {
+                        <option value="@i.UserID">@i.UserName</option>
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="UserID"></span>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="text-center pb-2">
+                <input type="hidden" asp-for="CustomerID" />
+                <button type="submit" class="btn btn-primary">Submit</button>
+                @* <button type="reset" class="btn btn-secondary">Reset</button> *@
+            </div>
+        </form>    <!-- End Multi Columns Form -->
+        <div class="text-center">
+            <form method="post" asp-controller="Customer" asp-action="cancelbtn">
+                <button type="submit" class="btn btn-warning">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,62 @@
+﻿@{
+    ViewData["Title"] = "User Form";
+}
+@model Admin3.Models.UserModel;
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">User Form</h5>
+
+        <!-- Multi Columns Form -->
+        <form method="post" asp-controller="User" asp-action="UserSave" class="row g-3">
+            <div class="col-md-12">
+                <label asp-for="UserName" for="inputEmail5" class="form-label">User Name</label>
+                <input asp-for="UserName" type="text" placeholder="Enter User Name" class="form-control" id="inputEmail5">
+                <span class="text-danger" asp-validation-for="UserName"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Email" for="inputCity" class="form-label">Emial</label>
+                <input asp-for="Email" type="Email" class="form-control" placeholder="Email" id="inputCity">
+                <span class="text-danger" asp-validation-for="Email"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Password" for="inputState" class="form-label">Password</label>
+                <input asp-for="Password" type="text" class="form-control" placeholder="Password" id="inputZip">
+                <span class="text-danger" asp-validation-for="Password"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="MobileNo" for="inputState" class="form-label">MobileNo</label>
+                <input asp-for="MobileNo" type="number" class="form-control" id="inputZip" placeholder="Enter Mobile No.">
+                <span class="text-danger" asp-validation-for="MobileNo"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Address" for="inputState" class="form-label">Address</label>
+                <input asp-for="Address" type="text" class="form-control" id="inputZip" placeholder="Enter Address">
+                <span class="text-danger" asp-validation-for="Address"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="IsActive" for="inputState" class="form-label">IsActive</label>
+                <input asp-for="IsActive" type="text" class="form-control" placeholder="IsActive" id="inputZip" >
+                <span class="text-danger" asp-validation-for="IsActive"></span>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="text-center pb-2">
+                <input type="hidden" asp-for="UserID" />
+                <button type="submit" class="btn btn-primary">Submit</button>
+                @* <button type="reset" class="btn btn-secondary">Reset</button> *@
+            </div>
+        </form><!-- End Multi Columns Form -->
+        <div class="text-center">
+            <form method="post" asp-action="cancelbtn" asp-controller="User">
+                <button type="submit" class="btn btn-warning">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,63 @@
+﻿@{
+    ViewData["Title"] = "Project Form";
+}
+@model Admin3.Models.ProductModel;
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Product Form</h5>
+
+        <!-- Multi Columns Form -->
+        <form method="post" asp-controller="Product" asp-action="ProductSave" class="row g-3">
+            <div class="col-md-12">
+                <label asp-for="ProductName" for="inputEmail5" class="form-label">Product Name</label>
+                <input asp-for="ProductName" type="text" placeholder="Enter Product Name" class="form-control" id="inputEmail5">
+                <span class="text-danger" asp-validation-for="ProductName"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="ProductPrice" for="inputCity" class="form-label">Price </label>
+                <input asp-for="ProductPrice" placeholder="ENter Product Price" type="text" class="form-control" id="inputCity">
+                <span class="text-danger" asp-validation-for="ProductPrice"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="ProductCode" for="inputState" class="form-label">Product Code</label>
+                <input asp-for="ProductCode" placeholder="Enter Product Code" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="ProductCode"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Description" for="inputState" class="form-label">Description</label>
+                <input asp-for="Description" type="text" class="form-control" id="inputZip" placeholder="Enter Description">
+                <span class="text-danger" asp-validation-for="Description"></span>
+            </div>
+            <div class="col-md-6">
+                <label asp-for="UserID" for="inputState" class="form-label">User ID</label>
+                <select asp-for="UserID" id="inputState" class="form-select">
+                    <option value="">Chose UserName </option>
+                    @foreach (var i in ViewBag.UserList)
+                    {
+                        <option value="@i.UserID">@i.UserName</option>
+                    }
+                </select>
+                <span class="text-danger" asp-validation-for="UserID"></span>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="text-center pb-2">
+                <input type="hidden" asp-for="ProductID"/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                @* <button type="reset" class="btn btn-secondary">Reset</button> *@
+            </div>
+        </form><!-- End Multi Columns Form -->
+        <div class="text-center">
+            <form method="post" asp-action="cancelbtn" asp-controller="Product">
+                <button type="submit" class="btn btn-warning">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

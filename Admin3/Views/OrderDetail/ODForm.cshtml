@@ -1,0 +1,67 @@
+﻿@{
+}
+@model Admin3.Models.OrderDetailModel;
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">OrderDetail Form</h5>
+
+        <!-- Multi Columns Form -->
+        <form method="post" asp-controller="OrderDetail" asp-action="OrderDetialSave" class="row g-3">
+            <div class="col-md-4">
+                <label asp-for="OrderID" for="inputState" class="form-label">Order ID</label>
+                <select asp-for="OrderID" id="inputState" class="form-select" asp-items="@(new SelectList(ViewBag.OrderList,"OrderID","OrderNO"))">
+                    <option value="">Chose Order Id</option>
+                </select>
+                <span class="text-danger" asp-validation-for="OrderID"></span>
+            </div>
+
+            <div class="col-md-4">
+                <label asp-for="ProductID" for="inputState" class="form-label">Product ID</label>
+                <select asp-for="ProductID" id="inputState" class="form-select" asp-items="@(new SelectList(ViewBag.ProductList,"ProductID","ProductName"))">
+                    <option value="">Chose Product Id</option>
+                </select>
+                <span class="text-danger" asp-validation-for="ProductID"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Quantity" for="inputState" class="form-label">Quantity</label>
+                <input asp-for="Quantity" placeholder="Enter Quantity" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="Quantity"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Amount" for="inputState" class="form-label">Amount</label>
+                <input asp-for="Amount" type="text" class="form-control" id="inputZip" placeholder="Enter Amount">
+                <span class="text-danger" asp-validation-for="Amount"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="TotalAmount" for="inputState" class="form-label">TotalAmount</label>
+                <input asp-for="TotalAmount" placeholder="Enter TotalAmount" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="TotalAmount"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="UserID" for="inputState" class="form-label">User ID</label>
+                <select asp-for="UserID" id="inputState" class="form-select" asp-items="@(new SelectList(ViewBag.UserList,"UserID","UserName"))">
+                    <option value="">Chose User Id</option>
+                </select>
+                <span class="text-danger" asp-validation-for="UserID"></span>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="text-center pb-2">
+                <input type="hidden" name="OrderDetailID" asp-for="OrderDetailID" />
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </div>
+        </form><!-- End Multi Columns Form -->
+        <div class="text-center">
+            <form method="post" asp-action="cancelbtn" asp-controller="OrderDetail">
+                <button type="submit" class="btn btn-warning">Cancel</button>
+            </form>           
+        </div>
+    </div>
+</div>

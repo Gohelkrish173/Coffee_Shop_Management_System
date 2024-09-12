@@ -1,0 +1,72 @@
+﻿@{
+    ViewData["Title"] = "Bills Form";
+}
+@model Admin3.Models.BillsModel;
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Bill Form</h5>
+
+        <!-- Multi Columns Form -->
+        <form method="post" asp-controller="Bills" asp-action="BillsSave" class="row g-3">
+            <div class="col-md-12">
+                <label asp-for="BillNumber" for="inputEmail5" class="form-label">BillNumber</label>
+                <input asp-for="BillNumber" type="text" placeholder="Enter BillNumber" class="form-control" id="inputEmail5">
+                <span class="text-danger" asp-validation-for="BillNumber"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="BillDate" for="inputCity" class="form-label">BillDate </label>
+                <input asp-for="BillDate" placeholder="ENter BillDate" type="date" class="form-control" id="inputCity">
+                <span class="text-danger" asp-validation-for="BillDate"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="TotalAmount" for="inputState" class="form-label">TotalAmount</label>
+                <input asp-for="TotalAmount" placeholder="Enter TotalAmount" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="TotalAmount"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="Discount" for="inputState" class="form-label">Discount</label>
+                <input asp-for="Discount" type="text" class="form-control" id="inputZip" placeholder="Enter Discount">
+                <span class="text-danger" asp-validation-for="Discount"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="NetAmount" for="inputState" class="form-label">NetAmount</label>
+                <input asp-for="NetAmount" placeholder="Enter NetAmount" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="NetAmount"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="UserID" for="inputState" class="form-label">User ID</label>
+                <select asp-for="UserID" id="inputState" class="form-select" asp-items="@(new SelectList(ViewBag.UserList,"UserID","UserName"))">
+                    <option value="">Chose User Id</option>
+                </select>
+                <span class="text-danger" asp-validation-for="UserID"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="OrderID" for="inputState" class="form-label">Order ID</label>
+                <select asp-for="OrderID" id="inputState" class="form-select" asp-items="@(new SelectList(ViewBag.OrderList,"OrderID","OrderNO"))">
+                    <option value="">Chose Order Id</option>
+                </select>
+                <span class="text-danger" asp-validation-for="OrderID"></span>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+
+            <div class="text-center pb-2">
+                <input type="hidden" name="BillID" asp-for="BillID" />
+                <button type="submit" class="btn btn-primary">Submit</button>
+                @* <button type="reset" class="btn btn-secondary">Reset</button> *@
+            </div>
+        </form><!-- End Multi Columns Form -->
+        <div class="text-center">
+            <form method="post" asp-action="cancelbtn" asp-controller="Bills">
+                <button type="submit" class="btn btn-warning">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>

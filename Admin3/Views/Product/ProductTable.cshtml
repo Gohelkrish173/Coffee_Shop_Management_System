@@ -1,0 +1,86 @@
+﻿@{
+    ViewData["Title"] = "Product Table Data";
+}
+@* @model List<Admin3.Models.ProductModel> *@
+@using System.Data;
+
+<div class="card">
+    <div class="card-body bg-warning">
+        <span class="text-center">@TempData["ErrorMessage"]</span>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">Product Data</h5>
+        <a class="btn btn-primary mb-3" asp-controller="Product" asp-action="ProductAddEdit" asp-route-ProductID=0>+ Add</a>
+        <a class="btn btn-success mb-3" asp-controller="Product" asp-action="ExportToExcel">ExportToExcel</a>
+        <a class="btn btn-warning mb-3" asp-controller="Product" asp-action="ExportToPDF">ExportToPDF</a>
+        <!-- Bordered Table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Product Id </th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Product Code</th>
+                    <th scope="col">Product Price</th>
+                    <th scope="col">Description</th>
+                    <th scope="col">User Name</th>
+                    <th scope="col">Action</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (DataRow pd in Model.Rows)
+                {
+                    <tr>
+                        <th scope="row">@pd["ProductID"]</th>
+                        <td>@pd["ProductName"]</td>
+                        <td>@pd["ProductCode"]</td>
+                        <td>@pd["ProductPrice"]</td>
+                        <td>@pd["Description"]</td>
+                        <td>@pd["UserName"]</td>
+                        <td class="d-flex justify-content-center">
+                            <a asp-action="ProductAddEdit" asp-controller="Product" asp-route-ProductID = "@Convert.ToInt32(pd["ProductID"])">
+                                <button type="submit" class="btn btn-success me-2">Edit</button>
+                            </a>
+                            <a>
+                                <button type="submit" class="btn btn-danger me-2" onclick="confirmDelete('@Url.Action("DelProduct","Product",new {lol = @Convert.ToInt32(pd["ProductID"])})')">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <!-- End Bordered Table -->
+
+    </div>
+</div>
+
+
+<script type="text/javascript">
+    function confirmDelete(url) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    }
+</script>
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: '@TempData["Message"]'
+        });
+    </script>
+}

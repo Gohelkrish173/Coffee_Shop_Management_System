@@ -1,0 +1,90 @@
+﻿@{
+    ViewData["Title"] = "User Table Data";
+}
+@* @model List<Admin3.Models.UserModel> *@
+@using System.Data
+
+<div class="card">
+    <div class="card-body bg-warning">
+        <span class="text-center">@TempData["ErrorMsg"]</span>
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">User Data</h5>
+
+        <a class="btn btn-primary mb-3" asp-action="UserAddEdit" asp-controller="User" asp-route-UserID=0>+ Add</a>
+        <a class="btn btn-success mb-3" asp-action="ExportToExcel" asp-controller="User">ExportToExcel</a>
+        <a class="btn btn-warning mb-3" asp-action="ExportToPDF" asp-controller="User">ExportToPDF</a>
+        <form enctype="multipart/form-data" asp-action="ImportFromExcel" asp-controller="User" method="post">
+            <input type="file" class="btn-success" name="file" />
+            <button type="submit" class="btn btn-danger mb-3">Import From Excel</button>
+        </form>
+        <!-- Bordered Table -->
+        <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">UserID </th>
+                    <th scope="col">UserName</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Password</th>
+                    <th scope="col">MobileNo</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Action</th>
+                </tr>
+
+            </thead>
+            <tbody>
+                @foreach (DataRow user in Model.Rows)
+                {
+                    <tr>
+                        <th scope="row">@user["UserID"]</th>
+                        <td>@user["UserName"]</td>
+                        <td>@user["Email"]</td>
+                        <td>@user["Password"]</td>
+                        <td>@user["MobileNo"]</td>
+                        <td>@user["Address"]</td>
+                        <td class="d-flex justify-content-center">
+                            <a method="post" asp-controller="User" asp-action="UserAddEdit" asp-route-UserID="@Convert.ToInt32(user["UserID"])">
+                                <button type="submit" class="btn btn-success me-2">Edit</button>
+                            </a>
+                            <a>
+                                <button type="submit" class="btn btn-danger" onclick="confirmDelete('@Url.Action("DelUser","User",new {id = @Convert.ToInt32(user["UserID"])})')">Delete</button>
+                            </a>
+                        </td>
+                    </tr>
+                }
+
+            </tbody>
+        </table>
+        <!-- End Bordered Table -->
+
+    </div>
+</div>
+
+<script type="text/javascript">
+    function confirmDelete(url) {
+        Swal.fire({
+            title: 'Are you sure?',
+            text: "You won't be able to revert this!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonColor: '#3085d6',
+            cancelButtonColor: '#d33',
+            confirmButtonText: 'Yes, delete it!'
+        }).then((result) => {
+            if (result.isConfirmed) {
+                window.location.href = url;
+            }
+        });
+    }
+</script>
+
+@if (TempData["Message"] != null)
+{
+    <script type="text/javascript">
+        Swal.fire({
+            icon: 'success',
+            title: 'Deleted!',
+            text: '@TempData["Message"]'
+        });
+    </script>
+}

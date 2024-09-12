@@ -1,0 +1,71 @@
+﻿@{
+    ViewData["Title"] = "Order Detail Form";
+}
+@model Admin3.Models.OrderModel;
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Order Form</h5>
+
+        <!-- Multi Columns Form -->
+        <form asp-controller="Order" asp-action="OrderSave" class="row g-3">
+            <div class="col-md-4">
+                <label asp-for="OrderNO" for="inputState" class="form-label">Order NO</label>
+                <input asp-for="OrderNO" placeholder="Enter Order NO" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="OrderNO"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="OrderDate" for="inputState" class="form-label">Order Date</label>
+                <input asp-for="OrderDate" placeholder="Enter Order Date" type="date" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="OrderDate"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="CustomerID" for="inputState" class="form-label">Customer ID</label>
+                <select asp-for="CustomerID" id="inputState" class="form-select" asp-items="@(new SelectList(ViewBag.CList,"CustomerID","CustomerName"))">
+                    <option selected>Chose Order Id</option>
+                </select>
+                <span class="text-danger" asp-validation-for="CustomerID"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="PaymentMode" for="inputState" class="form-label">PaymentMode</label>
+                <input asp-for="PaymentMode" placeholder="Enter PaymentMode" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="PaymentMode"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="TotalAmount" for="inputState" class="form-label">TotalAmount</label>
+                <input asp-for="TotalAmount" type="text" class="form-control" id="inputZip" placeholder="Enter PaymentMode">
+                <span class="text-danger" asp-validation-for="TotalAmount"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="ShippingAddress" for="inputState" class="form-label">Shipping Address</label>
+                <input asp-for="ShippingAddress" placeholder="Enter Shipping Address" type="text" class="form-control" id="inputZip">
+                <span class="text-danger" asp-validation-for="ShippingAddress"></span>
+            </div>
+            <div class="col-md-4">
+                <label asp-for="UserID" for="inputState" class="form-label">User ID</label>
+                <select asp-for="UserID" id="inputState" class="form-select" asp-items="@(new SelectList(ViewBag.UList,"UserID","UserName" ))">
+                    <option value="">Chose User Id</option>
+                </select>
+                <span class="text-danger" asp-validation-for="UserID"></span>
+            </div>
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+            <div class="text-center pb-3">
+                <input type="hidden" name="OrderId" asp-for="OrderID" />
+                <button type="submit" class="btn btn-primary">Submit</button>
+                @* <button type="reset" class="btn btn-secondary">Reset</button> *@
+            </div>
+        </form><!-- End Multi Columns Form -->
+        <div class="text-center">
+            <form method="post" asp-action="cancelbtn" asp-controller="Order">
+                <button type="submit" class="btn btn-warning">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
