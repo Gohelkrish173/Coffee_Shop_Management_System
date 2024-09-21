@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\College Work\\.Net\\Practical\\Theme Assignment\\Admin3\\Admin3.csproj": {}
+    "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj": {}
   },
   "projects": {
-    "D:\\College Work\\.Net\\Practical\\Theme Assignment\\Admin3\\Admin3.csproj": {
+    "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\College Work\\.Net\\Practical\\Theme Assignment\\Admin3\\Admin3.csproj",
+        "projectUniqueName": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj",
         "projectName": "Admin3",
-        "projectPath": "D:\\College Work\\.Net\\Practical\\Theme Assignment\\Admin3\\Admin3.csproj",
+        "projectPath": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj",
         "packagesPath": "C:\\Users\\Krish\\.nuget\\packages\\",
-        "outputPath": "D:\\College Work\\.Net\\Practical\\Theme Assignment\\Admin3\\obj\\",
+        "outputPath": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -78,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.304/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

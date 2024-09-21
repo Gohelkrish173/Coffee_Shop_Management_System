@@ -2,6 +2,7 @@
     ViewData["Title"] = "Order Detail Table Data";
 }
 @using System.Data;
+@using Admin3.Bal;
 
 <div class="card">
     <div class="card-body bg-warning">
@@ -30,23 +31,28 @@
             <tbody>
                 @foreach (DataRow od in Model.Rows)
                 {
-                    <tr>
-                        <th scope="row">@od["OrderDetailID"]</th>
-                        <td>@od["OrderNO"]</td>
-                        <td>@od["ProductName"]</td>
-                        <td>@od["Quantity"]</td>
-                        <td>@od["Amount"]</td>
-                        <td>@od["TotalAmount"]</td>
-                        <td>@od["UserName"]</td>
-                        <td class="d-flex justify-content-center">
-                            <a method="post" asp-action="OrderDetailAddEdit" asp-controller="OrderDetail" asp-route-OrderDetailID="@Convert.ToInt32(od["OrderDetailID"])">
-                                <button type="submit" class="btn btn-success me-2">Edit</button>
-                            </a>
-                            <a>
-                                <button type="submit" class="btn btn-danger" onclick="confirmDel('@Url.Action("DelOD","OrderDetail",new {id = @Convert.ToInt32(od["OrderDetailID"])})')">Delete</button>
-                            </a>
-                        </td>
-                    </tr>
+                    if (od["UserName"].ToString() == CommonVariable.UserName())
+                    {
+
+
+                        <tr>
+                            <th scope="row">@od["OrderDetailID"]</th>
+                            <td>@od["OrderNO"]</td>
+                            <td>@od["ProductName"]</td>
+                            <td>@od["Quantity"]</td>
+                            <td>@od["Amount"]</td>
+                            <td>@od["TotalAmount"]</td>
+                            <td>@od["UserName"]</td>
+                            <td class="d-flex justify-content-center">
+                                <a method="post" asp-action="OrderDetailAddEdit" asp-controller="OrderDetail" asp-route-OrderDetailID="@Convert.ToInt32(od["OrderDetailID"])">
+                                    <button type="submit" class="btn btn-success me-2">Edit</button>
+                                </a>
+                                <a>
+                                    <button type="submit" class="btn btn-danger" onclick="confirmDel('@Url.Action("DelOD","OrderDetail",new {id = @Convert.ToInt32(od["OrderDetailID"])})')">Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
                 }
 
             </tbody>
@@ -74,7 +80,7 @@
         });
     }
 
-    const SMsg = ()=>{
+    const SMsg = () => {
         Swal.fire({
             icon: 'success',
             title: 'Deleted!',

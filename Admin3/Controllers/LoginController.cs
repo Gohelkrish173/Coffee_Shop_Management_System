@@ -53,7 +53,6 @@ namespace Admin3.Controllers
         #endregion
 
         #region Logout
-        [HttpPost]
         public IActionResult Logout()
         {
             HttpContext.Session.Clear();
