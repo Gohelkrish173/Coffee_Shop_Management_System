@@ -3,6 +3,7 @@
 }
 @* @model List<Admin3.Models.ProductModel> *@
 @using System.Data;
+@using Admin3.Bal;
 
 <div class="card">
     <div class="card-body bg-warning">
@@ -30,6 +31,8 @@
             <tbody>
                 @foreach (DataRow pd in Model.Rows)
                 {
+                    if (pd["UserName"].ToString() == CommonVariable.UserName())
+                    {
                     <tr>
                         <th scope="row">@pd["ProductID"]</th>
                         <td>@pd["ProductName"]</td>
@@ -45,7 +48,8 @@
                                 <button type="submit" class="btn btn-danger me-2" onclick="confirmDelete('@Url.Action("DelProduct","Product",new {lol = @Convert.ToInt32(pd["ProductID"])})')">Delete</button>
                             </a>
                         </td>
-                    </tr>
+                        </tr>
+                    }
                 }
 
             </tbody>

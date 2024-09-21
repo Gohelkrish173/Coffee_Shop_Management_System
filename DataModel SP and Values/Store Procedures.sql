@@ -651,3 +651,55 @@ begin
 	FROM [dbo].[Users]
 	where UserName = @UserName and Password = @Password
 end
+
+-- 36.Register
+Alter PROCEDURE [dbo].[PR_User_Register] 
+    @UserName NVARCHAR(50),
+    @Password NVARCHAR(50),
+    @Email NVARCHAR(500),
+    @MobileNo VARCHAR(50),
+    @Address VARCHAR(50)
+AS
+BEGIN
+    INSERT INTO [dbo].[Users]
+    (
+        [UserName],
+        [Password],
+        [Email],
+        [MobileNo],
+        [Address],
+		[IsActive]	
+    )
+    VALUES
+    (
+        @UserName,
+        @Password,
+        @Email,
+        @MobileNo,
+        @Address,
+		'True'
+    );
+END
+
+--37. Customer select by pk of user
+Create Proc [dbo].[PR_SelectByUser_Customer]
+@UserID int
+AS
+BEGIN
+    SELECT
+		[dbo].[Customer].[CustomerID],
+		[dbo].[Customer].[CustomerName],
+		[dbo].[Customer].[HomeAddress],
+		[dbo].[Customer].[Email],
+		[dbo].[Customer].[MobileNo],
+		[dbo].[Customer].[GST_NO],
+		[dbo].[Customer].[CityName],
+		[dbo].[Customer].[PinCode],
+		[dbo].[Customer].[NetAmount],
+		[dbo].[Users].[UserName]
+	FROM [dbo].[Customer]
+	inner join [dbo].[Users] on [dbo].[Users].[UserID] = [dbo].[Customer].[UserID]
+	where [dbo].[Customer].[UserID] = @UserID
+END;
+
+--38. Product select by pk of user

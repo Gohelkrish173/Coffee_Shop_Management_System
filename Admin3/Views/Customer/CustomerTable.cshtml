@@ -3,6 +3,7 @@
 }
 @* @model List<Admin3.Models.CustomerModel> *@
 @using System.Data;
+@using Admin3.Bal;
 
 <div class="card">
     <div class="card-body bg-warning">
@@ -34,6 +35,10 @@
                 <tbody>
                     @foreach (DataRow C in Model.Rows)
                     {
+                        if(C["UserName"].ToString() == CommonVariable.UserName())
+                        {
+                            
+                        
                         <tr>
                             <th scope="row">@C["CustomerID"]</th>
                             <td>@C["CustomerName"]</td>
@@ -54,6 +59,7 @@
                                 </a>
                             </td>
                         </tr>
+                        }
                     }
                 </tbody>
             </table>

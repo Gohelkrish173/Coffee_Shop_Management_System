@@ -2,6 +2,7 @@
     ViewData["Title"] = "Bills Table Data";
 }
 @using System.Data;
+@using Admin3.Bal;
 
 <div class="card">
     <div class="card-body bg-warning">
@@ -30,6 +31,10 @@
             <tbody>
                 @foreach (DataRow B in Model.Rows)
                 {
+                    if(B["UserName"].ToString() == CommonVariable.UserName())
+                    {
+                        
+                    
                     <tr>
                         <th scope="row">@B["BillID"]</th>
                         <td>@B["BillNumber"]</td>
@@ -48,6 +53,7 @@
                             </a>
                         </td>
                     </tr>
+                    }
                 }
             </tbody>
         </table>

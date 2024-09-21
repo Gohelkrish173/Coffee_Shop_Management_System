@@ -1,12 +1,71 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "D:\\College Work\\.Net\\Practical\\Theme Assignment\\Admin3\\",
-  "Documents": [],
+  "WorkspaceRootPath": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\college work\\.net\\maincoffeeproject\\admin3\\views\\customer\\customertable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:views\\customer\\customertable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\college work\\.net\\maincoffeeproject\\admin3\\views\\bills\\billstable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:views\\bills\\billstable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\college work\\.net\\maincoffeeproject\\admin3\\views\\orderdetail\\orderdetailtable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:views\\orderdetail\\orderdetailtable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
       "VerticalTabListWidth": 256,
-      "DocumentGroups": []
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CustomerTable.cshtml",
+              "DocumentMoniker": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Views\\Customer\\CustomerTable.cshtml",
+              "RelativeDocumentMoniker": "Views\\Customer\\CustomerTable.cshtml",
+              "ToolTip": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Views\\Customer\\CustomerTable.cshtml",
+              "RelativeToolTip": "Views\\Customer\\CustomerTable.cshtml",
+              "ViewState": "AgIAAC4AAAAAAAAAAADwvz0AAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-19T07:59:45.97Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "BillsTable.cshtml",
+              "DocumentMoniker": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Views\\Bills\\BillsTable.cshtml",
+              "RelativeDocumentMoniker": "Views\\Bills\\BillsTable.cshtml",
+              "ToolTip": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Views\\Bills\\BillsTable.cshtml",
+              "RelativeToolTip": "Views\\Bills\\BillsTable.cshtml",
+              "ViewState": "AgIAACkAAAAAAAAAAADwvzYAAAAZAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-19T07:57:28.871Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "OrderDetailTable.cshtml",
+              "DocumentMoniker": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Views\\OrderDetail\\OrderDetailTable.cshtml",
+              "RelativeDocumentMoniker": "Views\\OrderDetail\\OrderDetailTable.cshtml",
+              "ToolTip": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Views\\OrderDetail\\OrderDetailTable.cshtml",
+              "RelativeToolTip": "Views\\OrderDetail\\OrderDetailTable.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAADYAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-09-19T07:54:50.744Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
     }
   ]
 }

@@ -3,6 +3,7 @@
 }
 @* @model List<Admin3.Models.OrderModel> *@
 @using System.Data;
+@using Admin3.Bal;
 
 <div class="card">
     <div class="card-body bg-warning">
@@ -32,24 +33,29 @@
             <tbody>
                 @foreach (DataRow o in Model.Rows)
                 {
-                    <tr>
-                        <th scope="row">@o["OrderID"]</th>
-                        <td>@o["OrderNO"]</td>
-                        <td>@o["OrderDate"]</td>
-                        <td>@o["CustomerName"]</td>
-                        <td>@o["PaymentMode"]</td>
-                        <td>@o["TotalAmount"]</td>
-                        <td>@o["ShippingAddress"]</td>
-                        <td>@o["UserName"]</td>
-                        <td class="d-flex justify-content-center">
-                            <a method="post" asp-action="OrderAddEdit" asp-controller="Order" asp-route-OrderID="@Convert.ToInt32(o["OrderID"])">
-                                <button type="submit" class="btn btn-success me-2">Edit</button>
-                            </a>
-                            <a>
-                                <button type="submit" class="btn btn-danger" onclick="confirmDel('@Url.Action("DelOrder","Order",new {id = @Convert.ToInt32(o["OrderID"])})')">Delete</button>
-                            </a>
-                        </td>
-                    </tr>
+                    if (o["UserName"].ToString() == CommonVariable.UserName())
+                    {
+
+
+                        <tr>
+                            <th scope="row">@o["OrderID"]</th>
+                            <td>@o["OrderNO"]</td>
+                            <td>@o["OrderDate"]</td>
+                            <td>@o["CustomerName"]</td>
+                            <td>@o["PaymentMode"]</td>
+                            <td>@o["TotalAmount"]</td>
+                            <td>@o["ShippingAddress"]</td>
+                            <td>@o["UserName"]</td>
+                            <td class="d-flex justify-content-center">
+                                <a method="post" asp-action="OrderAddEdit" asp-controller="Order" asp-route-OrderID="@Convert.ToInt32(o["OrderID"])">
+                                    <button type="submit" class="btn btn-success me-2">Edit</button>
+                                </a>
+                                <a>
+                                    <button type="submit" class="btn btn-danger" onclick="confirmDel('@Url.Action("DelOrder","Order",new {id = @Convert.ToInt32(o["OrderID"])})')">Delete</button>
+                                </a>
+                            </td>
+                        </tr>
+                    }
                 }
 
             </tbody>
