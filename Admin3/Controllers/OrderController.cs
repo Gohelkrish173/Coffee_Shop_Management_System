@@ -101,8 +101,14 @@ namespace Admin3.Controllers
         #endregion
 
         #region DeleteOrder
-        public IActionResult DelOrder(int id)
+        public IActionResult DelOrder(string OrderID)
         {
+            int? decryptedID = null;
+
+            if (!string.IsNullOrEmpty(OrderID))
+            {
+                decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(OrderID));
+            }
             try
             {
                 SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
@@ -111,7 +117,7 @@ namespace Admin3.Controllers
                 SqlCommand ocmd = conn.CreateCommand();
                 ocmd.CommandType = CommandType.StoredProcedure;
                 ocmd.CommandText = "PR_Delete_Order";
-                ocmd.Parameters.AddWithValue("@OrderId", id);
+                ocmd.Parameters.AddWithValue("@OrderId", decryptedID);
                 ocmd.ExecuteNonQuery();
                 conn.Close();
             }
@@ -124,8 +130,8 @@ namespace Admin3.Controllers
         }
         #endregion
 
-        #region OrderAddEdit
-        public IActionResult OrderAddEdit(int OrderID = 0)
+        #region LoadCustomer
+        private void LoadCustomer()
         {
             SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
             conn.Open();
@@ -153,6 +159,22 @@ namespace Admin3.Controllers
             }
 
             ViewBag.CList = custlist;
+        }
+        #endregion
+
+        #region LoadUser
+        private void LoadUser()
+        {
+            SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
+            conn.Open();
+
+            SqlCommand ocmd = conn.CreateCommand();
+            ocmd.CommandType = CommandType.StoredProcedure;
+            ocmd.CommandText = "PR_DropDown_Users";
+            SqlDataReader data2 = ocmd.ExecuteReader();
+            DataTable dt2 = new DataTable();
+            dt2.Load(data2);
+            conn.Close();
 
             List<UserDropDownModel> userlist = new List<UserDropDownModel>();
 
@@ -165,8 +187,24 @@ namespace Admin3.Controllers
             }
 
             ViewBag.UList = userlist;
+        }
+        #endregion
 
-            if(OrderID != 0)
+        #region OrderAddEdit
+        public IActionResult OrderAddEdit(string? OrderID)
+        {
+            int? decryptedID = null;
+
+            if (!string.IsNullOrEmpty(OrderID))
+            {
+                decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(OrderID));
+            }
+
+            LoadCustomer();
+
+            LoadUser();
+
+            if(decryptedID.HasValue)
             {
                 SqlConnection conn1 = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
                 conn1.Open();
@@ -174,7 +212,7 @@ namespace Admin3.Controllers
                 SqlCommand ocmd1 = conn1.CreateCommand();
                 ocmd1.CommandType = CommandType.StoredProcedure;
                 ocmd1.CommandText = "PR_SelectByPK_Order";
-                ocmd1.Parameters.AddWithValue("@OrderID", OrderID);
+                ocmd1.Parameters.AddWithValue("@OrderID", decryptedID);
                 ocmd1.ExecuteNonQuery();
                 SqlDataReader data3 = ocmd1.ExecuteReader();
                 DataTable dt3 = new DataTable();
@@ -196,7 +234,7 @@ namespace Admin3.Controllers
                 }
                 return View("OrderForm", O);
             }
-            return View("OrderForm");
+            return View("OrderForm",new OrderModel());
         }
         #endregion
 
@@ -224,7 +262,7 @@ namespace Admin3.Controllers
                 else
                 {
                     cmd.CommandText = "PR_Update_Orders";
-                    cmd.Parameters.Add("@OrderID",SqlDbType.Int).Value = omodel.OrderID;
+                    cmd.Parameters.Add("@OrderID",SqlDbType.Int).Value = omodel.OrderID.ToString();
                 }
                 cmd.Parameters.Add("@OrderNO",SqlDbType.VarChar).Value = omodel.OrderNO;
                 cmd.Parameters.Add("@OrderDate",SqlDbType.DateTime).Value = omodel.OrderDate;
@@ -239,7 +277,9 @@ namespace Admin3.Controllers
             }
             else
             {
-                return View("OrderAddEdit", omodel);
+                LoadCustomer();
+                LoadUser();
+                return View("OrderForm", omodel);
             }
         }
         #endregion

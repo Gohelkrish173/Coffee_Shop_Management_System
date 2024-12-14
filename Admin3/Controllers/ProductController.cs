@@ -74,8 +74,9 @@ namespace Admin3.Controllers
         #endregion
 
         #region DeleteProduct
-        public IActionResult DelProduct(int lol)
+        public IActionResult DelProduct(String lol)
         {
+            int decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(lol));
             try
             {
                 SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
@@ -84,7 +85,7 @@ namespace Admin3.Controllers
                 SqlCommand pdcmd = conn.CreateCommand();
                 pdcmd.CommandType = CommandType.StoredProcedure;
                 pdcmd.CommandText = "PR_Delete_Product";
-                pdcmd.Parameters.AddWithValue("@ProductID", lol);
+                pdcmd.Parameters.AddWithValue("@ProductID", decryptedID);
                 pdcmd.ExecuteNonQuery();
                 conn.Close();
             }
@@ -98,8 +99,8 @@ namespace Admin3.Controllers
         }
         #endregion
 
-        #region ProdcutAddEdit
-        public IActionResult ProductAddEdit(int ProductID = 0)
+        #region LoadUser
+        private void LoadUser()
         {
             SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
             conn.Open();
@@ -123,16 +124,37 @@ namespace Admin3.Controllers
             }
 
             ViewBag.UserList = users;
+        }
+        #endregion
 
-            if (ProductID != 0)
+        #region ProdcutAddEdit
+        public IActionResult ProductAddEdit(string? ProductID)
+        {
+
+            int? decryptedID = null;
+
+            // Decrypt only if CityID is not null or empty
+            if (!string.IsNullOrEmpty(ProductID))
             {
+                string decryptedCityIDString = UrlEncryptor.Decrypt(ProductID); // Decrypt the encrypted CityID
+                decryptedID = int.Parse(decryptedCityIDString); // Convert decrypted string to integer
+
+                if (RouteData.Values.ContainsKey("ProductID"))
+                {
+                    RouteData.Values["ProductID"] = decryptedID;
+                }
+            }
+
+            if (decryptedID.HasValue)
+            {
+                LoadUser();
                 SqlConnection conn1 = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
                 conn1.Open();
 
                 SqlCommand pdcmd1 = conn1.CreateCommand();
                 pdcmd1.CommandType = CommandType.StoredProcedure;
                 pdcmd1.CommandText = "PR_SelectByPK_Product";
-                pdcmd1.Parameters.AddWithValue("@ProductID", ProductID);
+                pdcmd1.Parameters.AddWithValue("@ProductID", decryptedID);
                 SqlDataReader reader1 = pdcmd1.ExecuteReader();
                 DataTable dt1 = new DataTable();
                 dt1.Load(reader1);
@@ -141,7 +163,7 @@ namespace Admin3.Controllers
 
                 foreach (DataRow row in dt1.Rows)
                 {
-                    prodmodel.ProductID = Convert.ToInt32(@row["ProductID"]);
+                    prodmodel.ProductID = Convert.ToInt32(row["ProductID"]);
                     prodmodel.ProductName = @row["ProductName"].ToString();
                     prodmodel.ProductCode = @row["ProductCode"].ToString();
                     prodmodel.ProductPrice = Convert.ToDouble(@row["ProductPrice"]);
@@ -151,13 +173,15 @@ namespace Admin3.Controllers
                 return View("ProductForm", prodmodel);
             }
 
-            return View("ProductForm");
+            LoadUser();
+            return View("ProductForm", new ProductModel());
         }
         #endregion
 
         #region ProductSave
         public IActionResult ProductSave(ProductModel pdmodel)
         {
+
             if (pdmodel.UserID <= 0)
             {
                 ModelState.AddModelError("UserID", "a valid user id is required.");
@@ -195,7 +219,8 @@ namespace Admin3.Controllers
             }
             else
             {
-                return View("ProductAddEdit", pdmodel);
+                LoadUser();
+                return View("ProductForm", pdmodel);
             }
         }
         #endregion

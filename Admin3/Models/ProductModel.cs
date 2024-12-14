@@ -5,7 +5,7 @@ namespace Admin3.Models
 {
     public class ProductModel
     {
-        public int? ProductID {  get; set; }
+        public int ProductID {  get; set; }
         [Required]
         [StringLength(100,ErrorMessage="Enter A valid Name")]
         public string ProductName   { get; set; }

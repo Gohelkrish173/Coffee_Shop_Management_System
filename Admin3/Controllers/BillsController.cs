@@ -111,8 +111,10 @@ namespace Admin3.Controllers
         #endregion
 
         #region DeleteBills
-        public IActionResult DelBill(int id)
+        public IActionResult DelBill(String id)
         {
+            int decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(id));
+
             try
             {
                 SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
@@ -121,7 +123,7 @@ namespace Admin3.Controllers
                 SqlCommand billcmd = conn.CreateCommand();
                 billcmd.CommandType = CommandType.StoredProcedure;
                 billcmd.CommandText = "PR_Delete_Bill";
-                billcmd.Parameters.AddWithValue("@BillID", id);
+                billcmd.Parameters.AddWithValue("@BillID", decryptedID);
                 billcmd.ExecuteNonQuery();
                 conn.Close();
 
@@ -136,8 +138,8 @@ namespace Admin3.Controllers
         }
         #endregion
 
-        #region BillsAddEdit
-        public IActionResult BillsAddEdit(int BillID = 0)
+        #region LoadOrderDropDown
+        public void LoadOrderDropDown()
         {
             SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
             conn.Open();
@@ -159,8 +161,20 @@ namespace Admin3.Controllers
                 omodel.OrderNO = dr["OrderNO"].ToString();
                 oddm.Add(omodel);
             }
+            conn.Close();
 
             ViewBag.OrderList = oddm;
+        }
+        #endregion
+
+        #region LoadUserDropDown
+        public void LoadUserDropDown()
+        {
+            SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
+            conn.Open();
+
+            SqlCommand cmd = conn.CreateCommand();
+            cmd.CommandType = CommandType.StoredProcedure;
 
             cmd.CommandText = "PR_DropDown_Users";
             SqlDataReader data2 = cmd.ExecuteReader();
@@ -176,19 +190,36 @@ namespace Admin3.Controllers
                 umodel.UserName = dr["UserName"].ToString();
                 uddm.Add(umodel);
             }
-
-            ViewBag.UserList = uddm;
             conn.Close();
 
-            if (BillID != 0)
+            ViewBag.UserList = uddm;
+        }
+        #endregion
+
+        #region BillsAddEdit
+        public IActionResult BillsAddEdit(string? BillID)
+        {
+            int? decryptedID = null;
+
+            // Decrypt only if CityID is not null or empty
+            if (!string.IsNullOrEmpty(BillID))
             {
+                string decryptedCityIDString = UrlEncryptor.Decrypt(BillID); // Decrypt the encrypted CityID
+                decryptedID = int.Parse(decryptedCityIDString); // Convert decrypted string to integer
+            }
+
+            if (decryptedID.HasValue)
+            {
+                LoadOrderDropDown();
+                LoadUserDropDown();
+
                 SqlConnection conn1 = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
                 conn1.Open();
 
                 SqlCommand cmd1 = conn1.CreateCommand();
                 cmd1.CommandType = CommandType.StoredProcedure;
                 cmd1.CommandText = "PR_SelectByPK_Bill";
-                cmd1.Parameters.AddWithValue("@BillID", BillID);
+                cmd1.Parameters.AddWithValue("@BillID", decryptedID);
                 SqlDataReader d = cmd1.ExecuteReader();
                 DataTable dt3 = new DataTable();
                 dt3.Load(d);
@@ -209,13 +240,16 @@ namespace Admin3.Controllers
                 }
                 return View("BillsForm", bmodel);
             }
-            return View("BillsForm");
+            LoadOrderDropDown();
+            LoadUserDropDown();
+            return View("BillsForm",new BillsModel());
         }
         #endregion
 
         #region BillsSave
         public IActionResult BillsSave(BillsModel bsmodel)
         {
+
             if (bsmodel.UserID <= 0 && bsmodel.UserID == null)
             {
                 ModelState.AddModelError("UserID", "Invalid UserID");
@@ -256,10 +290,9 @@ namespace Admin3.Controllers
                 return RedirectToAction("BillsTable");
 
             }
-            else
-            {
-                return View("BillsAddEdit", bsmodel);
-            }
+            LoadOrderDropDown();
+            LoadUserDropDown();
+            return View("BillsForm", bsmodel);
         }
         #endregion
 

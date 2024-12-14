@@ -115,8 +115,10 @@ namespace Admin3.Controllers
         #endregion
 
         #region DeleteCustomer
-        public IActionResult DelCust(int id)
+        public IActionResult DelCust(string id)
         {
+            int decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(id));
+
             try
             {
                 SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
@@ -125,7 +127,7 @@ namespace Admin3.Controllers
                 SqlCommand Ccmd = conn.CreateCommand();
                 Ccmd.CommandType = CommandType.StoredProcedure;
                 Ccmd.CommandText = "PR_Delete_Customer";
-                Ccmd.Parameters.AddWithValue("@CustomerID", id);
+                Ccmd.Parameters.AddWithValue("@CustomerID", decryptedID);
                 Ccmd.ExecuteNonQuery();
                 conn.Close();
 
@@ -140,8 +142,8 @@ namespace Admin3.Controllers
         }
         #endregion
 
-        #region CustomerAddEditPageRender
-        public IActionResult CustomerAddEdit(int CustomerID = 0)
+        #region LoadUser
+        private void LoadUser()
         {
             SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
             conn.Open();
@@ -165,8 +167,22 @@ namespace Admin3.Controllers
             }
 
             ViewBag.userlist = ulist;
+        }
+        #endregion
 
-            if (CustomerID != 0 || CustomerID != null)
+        #region CustomerAddEditPageRender
+        public IActionResult CustomerAddEdit(string? CustomerID)
+        {
+            int? decryptedID = 0;
+
+            if (!string.IsNullOrEmpty(CustomerID))
+            {
+                decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(CustomerID));
+            }
+
+            LoadUser();
+            
+            if (decryptedID.HasValue)
             {
                 SqlConnection conn1 = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
                 conn1.Open();
@@ -174,7 +190,7 @@ namespace Admin3.Controllers
                 SqlCommand ccmd1 = conn1.CreateCommand();
                 ccmd1.CommandType = CommandType.StoredProcedure;
                 ccmd1.CommandText = "PR_SelectByPK_Customer";
-                ccmd1.Parameters.AddWithValue("@CustomerID", CustomerID);
+                ccmd1.Parameters.AddWithValue("@CustomerID", decryptedID);
                 ccmd1.ExecuteNonQuery();
                 SqlDataReader reader1 = ccmd1.ExecuteReader();
                 DataTable dt1 = new DataTable();
@@ -198,7 +214,7 @@ namespace Admin3.Controllers
                 }
                 return View("CustomerForm", c);
             }
-            return View("CustomerForm");
+            return View("CustomerForm",new CustomerModel());
         }
         #endregion
 
@@ -242,7 +258,8 @@ namespace Admin3.Controllers
             }
             else
             {
-                return View("CustomerAddEdit",Cmodel);
+                LoadUser();
+                return View("CustomerForm",Cmodel);
             }
         }
         #endregion

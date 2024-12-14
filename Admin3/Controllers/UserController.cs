@@ -64,8 +64,9 @@ namespace Admin3.Controllers
         #endregion
 
         #region DeleteUser
-        public IActionResult DelUser(int id)
+        public IActionResult DelUser(String id)
         {
+            int decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(id));
             try
             {
                 SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
@@ -74,7 +75,7 @@ namespace Admin3.Controllers
                 SqlCommand Ucmd = conn.CreateCommand();
                 Ucmd.CommandType = CommandType.StoredProcedure;
                 Ucmd.CommandText = "PR_Delete_Users";
-                Ucmd.Parameters.AddWithValue("@UserID", id);
+                Ucmd.Parameters.AddWithValue("@UserID", decryptedID);
                 Ucmd.ExecuteNonQuery();
                 conn.Close();
             }
@@ -87,10 +88,18 @@ namespace Admin3.Controllers
         #endregion
 
         #region UserAddEditRender
-
-        public IActionResult UserAddEdit(int UserID = 0)
+        public IActionResult UserAddEdit(string? UserID)
         {
-            if (UserID != 0)
+            int? decryptedID = null;
+
+            // Decrypt only if CityID is not null or empty
+            if (!string.IsNullOrEmpty(UserID))
+            {
+                string decryptedCityIDString = UrlEncryptor.Decrypt(UserID); // Decrypt the encrypted CityID
+                decryptedID = int.Parse(decryptedCityIDString); // Convert decrypted string to integer
+            }
+
+            if (decryptedID.HasValue)
             {
                 SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
                 conn.Open();
@@ -98,7 +107,7 @@ namespace Admin3.Controllers
                 SqlCommand Ucmd = conn.CreateCommand();
                 Ucmd.CommandType = CommandType.StoredProcedure;
                 Ucmd.CommandText = "PR_SelectByPK_Users";
-                Ucmd.Parameters.AddWithValue("@UserID", UserID);
+                Ucmd.Parameters.AddWithValue("@UserID", decryptedID);
                 SqlDataReader reader = Ucmd.ExecuteReader();
                 DataTable dt = new DataTable();
                 dt.Load(reader);
@@ -118,7 +127,7 @@ namespace Admin3.Controllers
                 }
                 return View("UserForm", umodel);
             }
-            return View("UserForm");
+            return View("UserForm",new UserModel());
         }
 
         #endregion
@@ -155,7 +164,7 @@ namespace Admin3.Controllers
             }
             else
             {
-                return View("UserAddEdit", umodel);
+                return View("UserForm", umodel);
             }
         }
         #endregion

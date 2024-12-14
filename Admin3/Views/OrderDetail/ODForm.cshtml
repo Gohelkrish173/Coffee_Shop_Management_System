@@ -1,6 +1,4 @@
-﻿@{
-}
-@model Admin3.Models.OrderDetailModel;
+﻿@model Admin3.Models.OrderDetailModel;
 
 <div class="card">
     <div class="card-body">
@@ -54,7 +52,7 @@
                 </div>
             </div>
             <div class="text-center pb-2">
-                <input type="hidden" name="OrderDetailID" asp-for="OrderDetailID" />
+                <input type="hidden" name="OrderDetailID" asp-for="OrderDetailID" value="@Model.OrderDetailID"/>
                 <button type="submit" class="btn btn-primary">Submit</button>
             </div>
         </form><!-- End Multi Columns Form -->

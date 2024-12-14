@@ -9,7 +9,8 @@
   <ItemGroup>
     <PackageReference Include="EPPlus" Version="7.3.0" />
     <PackageReference Include="iTextSharp" Version="5.5.13.4" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+    <PackageReference Include="System.Data.SqlClient" Version="4.9.0" />
   </ItemGroup>
 
 </Project>

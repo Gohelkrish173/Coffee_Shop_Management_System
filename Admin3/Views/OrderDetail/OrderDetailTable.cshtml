@@ -44,11 +44,11 @@
                             <td>@od["TotalAmount"]</td>
                             <td>@od["UserName"]</td>
                             <td class="d-flex justify-content-center">
-                                <a method="post" asp-action="OrderDetailAddEdit" asp-controller="OrderDetail" asp-route-OrderDetailID="@Convert.ToInt32(od["OrderDetailID"])">
+                                <a method="post" asp-action="OrderDetailAddEdit" asp-controller="OrderDetail" asp-route-OrderDetailID="@UrlEncryptor.Encrypt(od["OrderDetailID"].ToString())">
                                     <button type="submit" class="btn btn-success me-2">Edit</button>
                                 </a>
                                 <a>
-                                    <button type="submit" class="btn btn-danger" onclick="confirmDel('@Url.Action("DelOD","OrderDetail",new {id = @Convert.ToInt32(od["OrderDetailID"])})')">Delete</button>
+                                    <button type="submit" class="btn btn-danger" onclick="confirmDel('@Url.Action("DelOD","OrderDetail",new {id = @UrlEncryptor.Encrypt(od["OrderDetailID"].ToString())})')">Delete</button>
                                 </a>
                             </td>
                         </tr>

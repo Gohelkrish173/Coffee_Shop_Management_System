@@ -1,0 +1,138 @@
+﻿@model Admin3.Models.CityModel
+@using Admin3.Bal
+
+<div class="panel-heading">
+    <h3 class="panel-title">City Add/Edit</h3>
+</div>
+
+<div class="panel-body">
+    <h4 class="text-success">@TempData["CityInsertMessage"]</h4>
+</div>
+
+<form class="form-horizontal"
+      role="form"
+      method="post"
+      asp-controller="City"
+      asp-action="CitySave">
+    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    
+
+    <div class="form-group">
+        <label for="CountryID" class="col-md-3 control-label"><span class="text-danger">*</span>Country Name</label>
+        <div class="col-md-9">
+            <select id="CountryID"
+                    name="CountryID"
+                    class="form-control"
+                    asp-for="CountryID">
+                <option value="">Select Country</option>
+                @foreach (var country in ViewBag.CountryList)
+                {
+                    <option value="@country.CountryID">
+                        @country.CountryName
+                    </option>
+                }
+            </select>
+            <span asp-validation-for="CountryID" class="text-danger"></span>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="StateID" class="col-md-3 control-label"><span class="text-danger">*</span>State Name</label>
+        <div class="col-md-9">
+            <select id="StateID"
+                    name="StateID"
+                    class="form-control"
+                    asp-for="StateID">
+                <option value="">Select State</option>
+                @if (ViewBag.StateList != null)
+                {
+                    foreach (var state in
+                    ViewBag.StateList)
+                    {
+                        if (state.StateID == Model.StateID)
+                        {
+                            <option value="@state.StateID">@state.StateName</option>
+                        }
+                        else
+                        {
+                            <option value="@state.StateID">@state.StateName</option>
+                        }
+                    }
+                }
+            </select>
+            <span asp-validation-for="StateID" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="CityName" class="col-md-3 control-label"><span class="text-danger">*</span>City Name</label>
+        <div class="col-md-9">
+            <input type="text"
+                   id="CityName"
+                   name="CityName"
+                   class="form-control"
+                   asp-for="CityName"
+                   placeholder="Enter City Name" />
+            <span asp-validation-for="CityName" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="CityCode" class="col-md-3 control-label"><span class="text-danger">*</span>City Code</label>
+        <div class="col-md-9">
+            <input type="text"
+                   id="CityCode"
+                   name="CityCode"
+                   class="form-control"
+                   asp-for="CityCode"
+                   placeholder="Enter City Code" />
+            <span asp-validation-for="CityCode" class="text-danger"></span>
+        </div>
+    </div>
+
+    <div class="form-group mt-2">
+        <div class="col-md-offset-3 col-md-9">
+            <input type="hidden" asp-for="CityID" value="@Model.CityID"/>
+            <input type="submit" class="btn btn-success" value="CitySave" />
+            <a class="btn btn-default"
+               asp-controller="City"
+               asp-action="CityTable">Cancel</a>
+        </div>
+    </div>
+</form>
+            
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#CountryID").change(function () {
+                var countryId = $(this).val();
+                if (countryId) {
+                    $.ajax({
+                        url: '@Url.Action("GetStateByCountry", "City")',
+                        type: "POST", // Changed to POST
+                        data: { CountryID: countryId }, // Use 'CountryID' to match controller
+                        success: function (data) {
+                            $("#StateID")
+                                .empty()
+                                .append('<option value="">Select State</option>');
+                            $.each(data, function (i, state) {
+                                $("#StateID").append(
+                                    '<option value="' +
+                                    state.stateID +
+                                    '">' +
+                                    state.stateName +
+                                    "</option>"
+                                );
+                            });
+                            console.log(state.stateID);
+                        },
+                        error: function (xhr, status, error) {
+                            console.error(error);
+                        },
+                    });
+                } else {
+                    $("#StateID").empty().append('<option value="">Select State</option>');
+                }
+            });
+        });
+    </script>
+}

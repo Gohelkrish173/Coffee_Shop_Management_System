@@ -1,0 +1,43 @@
+﻿@model Admin3.Models.CountryModel;
+
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">Country Form</h5>
+
+        <!-- Multi Columns Form -->
+        <form method="post" asp-controller="Country" asp-action="CountrySave" class="row g-3">
+            <div class="col-6">
+                <div class="col-md-12">
+                    <label asp-for="CountryName" for="inputState" class="form-label">CountryName</label>
+                    <input asp-for="CountryName" type="text" placeholder="Enter CountryName" class="form-control" id="inputZip">
+                    <span class="text-danger" asp-validation-for="CountryName"></span>
+                </div>
+                <div class="col-md-12">
+                    <label asp-for="CountryCode" for="inputState" class="form-label">CountryCode</label>
+                    <input asp-for="CountryCode" placeholder="Enter CountryCode" type="text" class="form-control" id="inputZip">
+                    <span class="text-danger" asp-validation-for="CountryCode"></span>
+                </div>
+            </div>
+
+            <div class="col-12">
+                <div class="form-check">
+                    <input class="form-check-input" type="checkbox" id="gridCheck">
+                    <label class="form-check-label" for="gridCheck">
+                        Check me out
+                    </label>
+                </div>
+            </div>
+
+            <div class="text-center pb-2">
+                <input type="hidden" asp-for="CountryID" value="@Model.CountryID"/>
+                <button type="submit" class="btn btn-primary">Submit</button>
+                @* <button type="reset" class="btn btn-secondary">Reset</button> *@
+            </div>
+        </form><!-- End Multi Columns Form -->
+        <div class="text-center">
+            <form method="post" asp-action="cancelbtn" asp-controller="Country">
+                <button type="submit" class="btn btn-warning">Cancel</button>
+            </form>
+        </div>
+    </div>
+</div>
