@@ -252,7 +252,7 @@ CREATE PROC [PR_Update_Product]
 AS
 BEGIN
     UPDATE [dbo].[Product]
-    SET 
+	SET 
         [dbo].[Product].[ProductName] = @ProductName,
         [dbo].[Product].[ProductPrice] = @ProductPrice,
         [dbo].[Product].[ProductCode] = @ProductCode,

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj": {}
+    "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj": {}
   },
   "projects": {
-    "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj": {
+    "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj",
+        "projectUniqueName": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj",
         "projectName": "Admin3",
-        "projectPath": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj",
+        "projectPath": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Admin3.csproj",
         "packagesPath": "C:\\Users\\Krish\\.nuget\\packages\\",
-        "outputPath": "D:\\College Work\\.Net\\MainCoffeeProject\\Admin3\\obj\\",
+        "outputPath": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Krish\\AppData\\Roaming\\NuGet\\NuGet.Config",
@@ -50,9 +50,13 @@
               "target": "Package",
               "version": "[7.3.0, )"
             },
+            "Newtonsoft.Json": {
+              "target": "Package",
+              "version": "[13.0.3, )"
+            },
             "System.Data.SqlClient": {
               "target": "Package",
-              "version": "[4.8.6, )"
+              "version": "[4.9.0, )"
             },
             "iTextSharp": {
               "target": "Package",
@@ -78,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.400/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.403/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

@@ -12,7 +12,7 @@
     <div class="card-body">
         <h5 class="card-title">User Data</h5>
 
-        <a class="btn btn-primary mb-3" asp-action="UserAddEdit" asp-controller="User" asp-route-UserID=0>+ Add</a>
+        <a class="btn btn-primary mb-3" asp-action="UserAddEdit" asp-controller="User">+ Add</a>
         <a class="btn btn-success mb-3" asp-action="ExportToExcel" asp-controller="User">ExportToExcel</a>
         <a class="btn btn-warning mb-3" asp-action="ExportToPDF" asp-controller="User">ExportToPDF</a>
         <form enctype="multipart/form-data" asp-action="ImportFromExcel" asp-controller="User" method="post">
@@ -38,8 +38,7 @@
                 {
                     if(user["UserName"].ToString() == CommonVariable.UserName())
                     {
-                        
-                    
+                       
                     <tr>
                         <th scope="row">@user["UserID"]</th>
                         <td>@user["UserName"]</td>
@@ -48,11 +47,11 @@
                         <td>@user["MobileNo"]</td>
                         <td>@user["Address"]</td>
                         <td class="d-flex justify-content-center">
-                            <a method="post" asp-controller="User" asp-action="UserAddEdit" asp-route-UserID="@Convert.ToInt32(user["UserID"])">
+                                <a method="post" asp-controller="User" asp-action="UserAddEdit" asp-route-UserID="@UrlEncryptor.Encrypt(user["UserID"].ToString())">
                                 <button type="submit" class="btn btn-success me-2">Edit</button>
                             </a>
                             <a>
-                                <button type="submit" class="btn btn-danger" onclick="confirmDelete('@Url.Action("DelUser","User",new {id = @Convert.ToInt32(user["UserID"])})')">Delete</button>
+                                    <button type="submit" class="btn btn-danger" onclick="confirmDelete('@Url.Action("DelUser","User",new {id = @UrlEncryptor.Encrypt(user["UserID"].ToString())})')">Delete</button>
                             </a>
                         </td>
                     </tr>

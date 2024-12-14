@@ -5,7 +5,7 @@ namespace Admin3.Models
 {
     public class OrderDetailModel
     {
-        public int? OrderDetailID { get; set; }
+        public int OrderDetailID { get; set; }
         [Required]
         public int OrderID { get; set; }
         [Required]

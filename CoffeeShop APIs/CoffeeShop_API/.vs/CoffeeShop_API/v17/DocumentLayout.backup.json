@@ -1,0 +1,37 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\coffeeshop apis\\coffeeshop_api\\controllers\\billcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|solutionrelative:controllers\\billcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "BillController.cs",
+              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\Controllers\\BillController.cs",
+              "RelativeDocumentMoniker": "Controllers\\BillController.cs",
+              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\Controllers\\BillController.cs",
+              "RelativeToolTip": "Controllers\\BillController.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAQwDUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-14T18:55:06.147Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

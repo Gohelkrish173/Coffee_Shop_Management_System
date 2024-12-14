@@ -1,0 +1,62 @@
+﻿@using System.Data;
+@using Admin3;
+@using Admin3.Bal
+
+
+<div class="d-flex justify-content-end align-items-center">
+    <a class="btn btn-outline-primary" asp-controller="Country" asp-action="CountryAddEdit">
+        <i class="bi bi-plus-lg"></i>&nbsp;Add Country
+    </a>
+</div>
+
+@if (TempData["CountryInsertMsg"] != null)
+{
+    <div class="alert alert-success">
+        @TempData["CountryInsertMsg"]
+    </div>
+}
+
+
+<div class="mb-3">
+    <input type="text" class="form-control" id="countrySearch" placeholder="Search Any">
+</div>
+
+<table class="table table-hover table-header-fixed">
+    <thead>
+        <tr>
+            <th scope="col">Country Name</th>
+            <th scope="col">CountryCode</th>
+            <th class="text-center">Actions</th>
+        </tr>
+    </thead>
+    <tbody id="countryTable">
+        @foreach (DataRow row in Model.Rows)
+        {
+            <tr>
+                <td>@row["CountryName"]</td>
+                <td>@row["CountryCode"]</td>
+                <td class="text-center">
+                    <a class="btn btn-outline-success btn-xs" asp-controller="Country" asp-action="CountryAddEdit" asp-route-CountryID="@UrlEncryptor.Encrypt(row["CountryID"].ToString())">
+                        <i class="bi bi-pencil-fill"></i>
+                    </a>
+                    <a class="btn btn-outline-danger btn-xs" asp-controller="Country" asp-action="Delete" asp-route-CountryID="@UrlEncryptor.Encrypt(row["CountryID"].ToString())" onclick="return confirm('Are you sure you want to delete this Country?');">
+                        <i class="bi bi-x"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section Scripts {
+    <script>
+        $(document).ready(function () {
+            $("#countrySearch").on("keyup", function () {
+                var value = $(this).val().toLowerCase();
+                $("#countryTable tr").filter(function () {
+                    $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1);
+                });
+            });
+        });
+    </script>
+}

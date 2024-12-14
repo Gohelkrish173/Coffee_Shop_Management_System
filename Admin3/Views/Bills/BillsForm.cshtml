@@ -1,7 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Bills Form";
-}
-@model Admin3.Models.BillsModel;
+﻿@model Admin3.Models.BillsModel;
 
 <div class="card">
     <div class="card-body">
@@ -58,7 +55,7 @@
             </div>
 
             <div class="text-center pb-2">
-                <input type="hidden" name="BillID" asp-for="BillID" />
+                <input type="hidden" name="BillID" asp-for="BillID" value="@Model.BillID" />
                 <button type="submit" class="btn btn-primary">Submit</button>
                 @* <button type="reset" class="btn btn-secondary">Reset</button> *@
             </div>

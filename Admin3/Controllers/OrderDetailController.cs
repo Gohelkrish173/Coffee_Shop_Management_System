@@ -105,8 +105,9 @@ namespace Admin3.Controllers
         #endregion
 
         #region DeleteOrderDetail
-        public IActionResult DelOD(int id)
+        public IActionResult DelOD(string id)
         {
+            int decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(id));
             try
             {
                 SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
@@ -115,7 +116,7 @@ namespace Admin3.Controllers
                 SqlCommand ODcmd = conn.CreateCommand();
                 ODcmd.CommandType = CommandType.StoredProcedure;
                 ODcmd.CommandText = "PR_Delete_OrderDetail";
-                ODcmd.Parameters.AddWithValue("@OrderDetailID", id);
+                ODcmd.Parameters.AddWithValue("@OrderDetailID", decryptedID);
                 ODcmd.ExecuteNonQuery();
                 conn.Close();
 
@@ -208,15 +209,16 @@ namespace Admin3.Controllers
         #endregion
 
         #region SelectByPKData
-        public OrderDetailModel ODModel(int OrderDetailID)
+        public OrderDetailModel ODModel(String OrderDetailID)
         {
+            int decryptedID = Convert.ToInt32(UrlEncryptor.Decrypt(OrderDetailID));
             SqlConnection conn1 = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
             conn1.Open();
 
             SqlCommand cmd1 = conn1.CreateCommand();
             cmd1.CommandType = CommandType.StoredProcedure;
             cmd1.CommandText = "PR_SelectByPK_OrderDetail";
-            cmd1.Parameters.AddWithValue("@OrderDetailID", OrderDetailID);
+            cmd1.Parameters.AddWithValue("@OrderDetailID", decryptedID);
             cmd1.ExecuteNonQuery();
             SqlDataReader data3 = cmd1.ExecuteReader();
             DataTable dt3 = new DataTable();
@@ -241,8 +243,17 @@ namespace Admin3.Controllers
         #endregion
 
         #region OrderDetailAddEdit
-        public IActionResult OrderDetailAddEdit(int OrderDetailID = 0)
+        public IActionResult OrderDetailAddEdit(string? OrderDetailID)
         {
+            int? decryptedID = null;
+
+            // Decrypt only if CityID is not null or empty
+            if (!string.IsNullOrEmpty(OrderDetailID))
+            {
+                string decryptedCityIDString = UrlEncryptor.Decrypt(OrderDetailID); // Decrypt the encrypted CityID
+                decryptedID = int.Parse(decryptedCityIDString); // Convert decrypted string to integer
+            }
+
             SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
             conn.Open();
 
@@ -254,11 +265,11 @@ namespace Admin3.Controllers
             ViewBag.UserList = UModel();
             conn.Close();
 
-            if (OrderDetailID != 0)
+            if (decryptedID.HasValue)
             {
                 return View("ODForm", ODModel(OrderDetailID));
             }
-            return View("ODForm");
+            return View("ODForm",new OrderDetailModel());
         }
         #endregion
 
@@ -310,7 +321,18 @@ namespace Admin3.Controllers
             }
             else
             {
-                return View("OrderDetailAddEdit", odmodel);
+                SqlConnection conn = new SqlConnection(this.configuration.GetConnectionString("myConnection"));
+                conn.Open();
+
+                SqlCommand cmd = conn.CreateCommand();
+                cmd.CommandType = CommandType.StoredProcedure;
+
+                ViewBag.OrderList = OModel();
+                ViewBag.ProductList = PModel();
+                ViewBag.UserList = UModel();
+                conn.Close();
+
+                return View("ODForm", odmodel);
             }
         }
         #endregion

@@ -11,7 +11,7 @@
     </div>
     <div class="card-body">
         <h5 class="card-title">Product Data</h5>
-        <a class="btn btn-primary mb-3" asp-controller="Product" asp-action="ProductAddEdit" asp-route-ProductID=0>+ Add</a>
+        <a class="btn btn-primary mb-3" asp-controller="Product" asp-action="ProductAddEdit">+ Add</a>
         <a class="btn btn-success mb-3" asp-controller="Product" asp-action="ExportToExcel">ExportToExcel</a>
         <a class="btn btn-warning mb-3" asp-controller="Product" asp-action="ExportToPDF">ExportToPDF</a>
         <!-- Bordered Table -->
@@ -41,11 +41,11 @@
                         <td>@pd["Description"]</td>
                         <td>@pd["UserName"]</td>
                         <td class="d-flex justify-content-center">
-                            <a asp-action="ProductAddEdit" asp-controller="Product" asp-route-ProductID = "@Convert.ToInt32(pd["ProductID"])">
+                                <a asp-action="ProductAddEdit" asp-controller="Product" asp-route-ProductID="@UrlEncryptor.Encrypt(pd["ProductID"].ToString())">
                                 <button type="submit" class="btn btn-success me-2">Edit</button>
                             </a>
                             <a>
-                                <button type="submit" class="btn btn-danger me-2" onclick="confirmDelete('@Url.Action("DelProduct","Product",new {lol = @Convert.ToInt32(pd["ProductID"])})')">Delete</button>
+                                    <button type="submit" class="btn btn-danger me-2" onclick="confirmDelete('@Url.Action("DelProduct","Product",new {lol = @UrlEncryptor.Encrypt(pd["ProductID"].ToString())})')">Delete</button>
                             </a>
                         </td>
                         </tr>

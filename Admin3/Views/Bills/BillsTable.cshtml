@@ -10,7 +10,7 @@
     </div>
     <div class="card-body">
         <h5 class="card-title">Bills Data</h5>
-        <a class="btn btn-primary mb-3" asp-action="BillsAddEdit" asp-controller="Bills" asp-route-BillID=0>+ Add</a>
+        <a class="btn btn-primary mb-3" asp-action="BillsAddEdit" asp-controller="Bills">+ Add</a>
         <a class="btn btn-success mb-3" asp-action="ExportToExcel" asp-controller="Bills">ExportToExcel</a>
         <a class="btn btn-warning mb-3" asp-action="ExportToPDF" asp-controller="Bills">ExportToPDF</a>
         <!-- Bordered Table -->
@@ -34,9 +34,9 @@
                     if(B["UserName"].ToString() == CommonVariable.UserName())
                     {
                         
-                    
                     <tr>
                         <th scope="row">@B["BillID"]</th>
+                        <td>@B["BillID"]</td>
                         <td>@B["BillNumber"]</td>
                         <td>@B["BillDate"]</td>
                         <td>@B["OrderNO"]</td>
@@ -45,11 +45,11 @@
                         <td>@B["NetAmount"]</td>
                         <td>@B["UserName"]</td>
                         <td class="d-flex justify-content-center">
-                            <a method="post" asp-controller="Bills" asp-action="BillsAddEdit" asp-route-BillID="@Convert.ToInt32(B["BillID"])">
+                            <a method="post" asp-controller="Bills" asp-action="BillsAddEdit" asp-route-BillID="@UrlEncryptor.Encrypt(B["BillID"].ToString())">
                                 <button type="submit" class="btn btn-success me-2">Edit</button>
                             </a>
                             <a>
-                                <button type="submit" class="btn btn-danger me-2" onclick="confirmDelete('@Url.Action("DelBill","Bills",new {id = @Convert.ToInt32(B["BillID"])})')">Delete</button>
+                                <button type="submit" class="btn btn-danger me-2" onclick="confirmDelete('@Url.Action("DelBill","Bills",new {id = @UrlEncryptor.Encrypt(B["BillID"].ToString())})')">Delete</button>
                             </a>
                         </td>
                     </tr>

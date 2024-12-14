@@ -1,7 +1,4 @@
-﻿@{
-    ViewData["Title"] = "Project Form";
-}
-@model Admin3.Models.ProductModel;
+﻿@model Admin3.Models.ProductModel;
 
 <div class="card">
     <div class="card-body">
@@ -9,6 +6,7 @@
 
         <!-- Multi Columns Form -->
         <form method="post" asp-controller="Product" asp-action="ProductSave" class="row g-3">
+
             <div class="col-md-12">
                 <label asp-for="ProductName" for="inputEmail5" class="form-label">Product Name</label>
                 <input asp-for="ProductName" type="text" placeholder="Enter Product Name" class="form-control" id="inputEmail5">
@@ -49,7 +47,7 @@
                 </div>
             </div>
             <div class="text-center pb-2">
-                <input type="hidden" asp-for="ProductID"/>
+                <input type="hidden" asp-for="ProductID" value="@Model.ProductID"/>
                 <button type="submit" class="btn btn-primary">Submit</button>
                 @* <button type="reset" class="btn btn-secondary">Reset</button> *@
             </div>
