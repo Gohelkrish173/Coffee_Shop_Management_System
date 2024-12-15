@@ -14,6 +14,9 @@ builder.Services.AddScoped<OrderRepository>();
 builder.Services.AddScoped<OrderDetailRepository>();
 builder.Services.AddScoped<ProductRepository>();
 builder.Services.AddScoped<UserRepository>();
+builder.Services.AddScoped<CountryRepository>();
+builder.Services.AddScoped<StateRepository>();
+builder.Services.AddScoped<CityRepository>();
 
 var app = builder.Build();
 
