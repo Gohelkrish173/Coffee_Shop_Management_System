@@ -74,6 +74,154 @@
     "ReturnTypes": []
   },
   {
+    "ContainingType": "CoffeeShop_API.Controllers.CityController",
+    "Method": "Index",
+    "RelativePath": "api/City",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CityController",
+    "Method": "InsertCity",
+    "RelativePath": "api/City",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cmodel",
+        "Type": "CoffeeShop_API.Models.CityModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CityController",
+    "Method": "UpdateCity",
+    "RelativePath": "api/City",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cityModel",
+        "Type": "CoffeeShop_API.Models.CityModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CityController",
+    "Method": "DeleteCity",
+    "RelativePath": "api/City",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CityID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CityController",
+    "Method": "GetCityByPK",
+    "RelativePath": "api/City/{CityID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CityID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CountryController",
+    "Method": "Index",
+    "RelativePath": "api/Country",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CountryController",
+    "Method": "InsertCountry",
+    "RelativePath": "api/Country",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cmodel",
+        "Type": "CoffeeShop_API.Models.CountryModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CountryController",
+    "Method": "UpdateCountry",
+    "RelativePath": "api/Country",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "countryModel",
+        "Type": "CoffeeShop_API.Models.CountryModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CountryController",
+    "Method": "DeleteCountry",
+    "RelativePath": "api/Country",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CountryID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CountryController",
+    "Method": "GetCountryByPK",
+    "RelativePath": "api/Country/{CountryID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CountryID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "CoffeeShop_API.Controllers.CustomerController",
     "Method": "GetAllCustomer",
     "RelativePath": "api/Customer",
@@ -363,6 +511,80 @@
     "Parameters": [
       {
         "Name": "ProductID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.StateController",
+    "Method": "Index",
+    "RelativePath": "api/State",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.StateController",
+    "Method": "InsertState",
+    "RelativePath": "api/State",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "smodel",
+        "Type": "CoffeeShop_API.Models.StateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.StateController",
+    "Method": "UpdateState",
+    "RelativePath": "api/State",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "stateModel",
+        "Type": "CoffeeShop_API.Models.StateModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.StateController",
+    "Method": "DeleteState",
+    "RelativePath": "api/State",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "StateID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.StateController",
+    "Method": "GetStateByPK",
+    "RelativePath": "api/State/{StateID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "StateID",
         "Type": "System.Int32",
         "IsRequired": true
       }
