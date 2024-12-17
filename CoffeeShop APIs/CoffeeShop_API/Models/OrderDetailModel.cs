@@ -4,23 +4,15 @@ namespace CoffeeShop_API.Models
 {
     public class OrderDetailModel
     {
-        public int? OrderDetailID { get; set; }
-        [Required]
+        public int OrderDetailID { get; set; }
         public int OrderID { get; set; }
-        
-        public String OrderNO { get; set; }
-        [Required]
+        public string? OrderNO { get; set; }
         public int ProductID { get; set; }
-        public String ProductName { get; set; }
-
-        [Required]
+        public string? ProductName { get; set; }
         public int Quantity { get; set; }
-        [Required]
         public decimal Amount { get; set; }
-        [Required]
         public decimal TotalAmount { get; set; }
-        [Required]
         public int UserID { get; set; }
-        public String UserName { get; set; }
+        public string? UserName { get; set; }
     }
 }

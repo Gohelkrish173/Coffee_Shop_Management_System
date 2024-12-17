@@ -172,3 +172,6 @@ D:\Semester Wise College Work\Sem-5 (C.S.E)\.Net\MainCoffeeProject\CoffeeShop AP
 D:\Semester Wise College Work\Sem-5 (C.S.E)\.Net\MainCoffeeProject\CoffeeShop APIs\CoffeeShop_API\obj\Debug\net8.0\CoffeeShop_API.pdb
 D:\Semester Wise College Work\Sem-5 (C.S.E)\.Net\MainCoffeeProject\CoffeeShop APIs\CoffeeShop_API\obj\Debug\net8.0\CoffeeShop_API.genruntimeconfig.cache
 D:\Semester Wise College Work\Sem-5 (C.S.E)\.Net\MainCoffeeProject\CoffeeShop APIs\CoffeeShop_API\obj\Debug\net8.0\ref\CoffeeShop_API.dll
+D:\Semester Wise College Work\Sem-5 (C.S.E)\.Net\MainCoffeeProject\CoffeeShop APIs\CoffeeShop_API\bin\Debug\net8.0\FluentValidation.dll
+D:\Semester Wise College Work\Sem-5 (C.S.E)\.Net\MainCoffeeProject\CoffeeShop APIs\CoffeeShop_API\bin\Debug\net8.0\FluentValidation.AspNetCore.dll
+D:\Semester Wise College Work\Sem-5 (C.S.E)\.Net\MainCoffeeProject\CoffeeShop APIs\CoffeeShop_API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll

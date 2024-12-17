@@ -26,7 +26,7 @@ namespace CoffeeShop_API.Controllers
         #endregion
 
         #region DeleteCustomer
-        [HttpDelete]
+        [HttpDelete("{CustomerID:int}")]
         public IActionResult DeleteCustomer(int CustomerID)
         {
             bool responce = customerRepository.DeleteCustomer(CustomerID);
