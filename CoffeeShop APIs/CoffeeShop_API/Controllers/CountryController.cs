@@ -44,7 +44,7 @@ namespace CoffeeShop_API.Controllers
         #endregion
 
         #region DeleteCountry
-        [HttpDelete]
+        [HttpDelete("{CountryID:int}")]
         public IActionResult DeleteCountry(int CountryID)
         {
             bool Reflected = _countryRepository.DeleteCountry(CountryID);

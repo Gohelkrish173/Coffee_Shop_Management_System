@@ -45,7 +45,7 @@ namespace CoffeeShop_API.Controllers
         #endregion
 
         #region DeleteCity
-        [HttpDelete]
+        [HttpDelete("{CityID:int}")]
         public IActionResult DeleteCity(int CityID)
         {
             bool Reflected = _cityRepository.DeleteCity(CityID);

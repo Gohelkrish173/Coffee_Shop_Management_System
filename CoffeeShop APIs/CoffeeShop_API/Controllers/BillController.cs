@@ -26,7 +26,7 @@ namespace CoffeeShop_API.Controllers
         #endregion
 
         #region DeleteBill
-        [HttpDelete]
+        [HttpDelete("{BillID:int}")]
         public IActionResult DeleteBill(int BillID)
         {
             var Bills = _billRepository.DeleteBill(BillID);

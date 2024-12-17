@@ -11,22 +11,6 @@
   },
   {
     "ContainingType": "CoffeeShop_API.Controllers.BillController",
-    "Method": "DeleteBill",
-    "RelativePath": "api/Bill",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "BillID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CoffeeShop_API.Controllers.BillController",
     "Method": "InsertBill",
     "RelativePath": "api/Bill",
     "HttpMethod": "POST",
@@ -52,6 +36,22 @@
       {
         "Name": "billModel",
         "Type": "CoffeeShop_API.Models.BillModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.BillController",
+    "Method": "DeleteBill",
+    "RelativePath": "api/Bill/{BillID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "BillID",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -118,7 +118,7 @@
   {
     "ContainingType": "CoffeeShop_API.Controllers.CityController",
     "Method": "DeleteCity",
-    "RelativePath": "api/City",
+    "RelativePath": "api/City/{CityID}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -126,7 +126,7 @@
       {
         "Name": "CityID",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -192,7 +192,7 @@
   {
     "ContainingType": "CoffeeShop_API.Controllers.CountryController",
     "Method": "DeleteCountry",
-    "RelativePath": "api/Country",
+    "RelativePath": "api/Country/{CountryID}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -200,7 +200,7 @@
       {
         "Name": "CountryID",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -229,22 +229,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CoffeeShop_API.Controllers.CustomerController",
-    "Method": "DeleteCustomer",
-    "RelativePath": "api/Customer",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "CustomerID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
     "ReturnTypes": []
   },
   {
@@ -281,6 +265,22 @@
   },
   {
     "ContainingType": "CoffeeShop_API.Controllers.CustomerController",
+    "Method": "DeleteCustomer",
+    "RelativePath": "api/Customer/{CustomerID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CustomerID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.CustomerController",
     "Method": "GetCustomerByPK",
     "RelativePath": "api/Customer/{CustomerID}",
     "HttpMethod": "GET",
@@ -296,9 +296,65 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "CoffeeShop_API.Controllers.OrderController",
-    "Method": "GetAllOrders",
-    "RelativePath": "api/Order",
+    "ContainingType": "CoffeeShop_API.Controllers.DropDownController",
+    "Method": "CountryDropDown",
+    "RelativePath": "api/DropDown/CountryDropDown",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.DropDownController",
+    "Method": "CustomerDropDown",
+    "RelativePath": "api/DropDown/CustomerDropDown",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.DropDownController",
+    "Method": "OrderDronDown",
+    "RelativePath": "api/DropDown/OrderDropDown",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.DropDownController",
+    "Method": "ProductDropDown",
+    "RelativePath": "api/DropDown/ProductDropDown",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.DropDownController",
+    "Method": "StateDropDown",
+    "RelativePath": "api/DropDown/StateDropDown/{CountryID}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "CountryID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.DropDownController",
+    "Method": "UserDropDown",
+    "RelativePath": "api/DropDown/UserDropDown",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -307,18 +363,12 @@
   },
   {
     "ContainingType": "CoffeeShop_API.Controllers.OrderController",
-    "Method": "DeleteOrder",
+    "Method": "GetAllOrders",
     "RelativePath": "api/Order",
-    "HttpMethod": "DELETE",
+    "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "OrderID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": []
   },
   {
@@ -355,6 +405,22 @@
   },
   {
     "ContainingType": "CoffeeShop_API.Controllers.OrderController",
+    "Method": "DeleteOrder",
+    "RelativePath": "api/Order/{OrderID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OrderID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.OrderController",
     "Method": "GetOrderByPK",
     "RelativePath": "api/Order/{OrderID}",
     "HttpMethod": "GET",
@@ -377,22 +443,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CoffeeShop_API.Controllers.OrderDetailController",
-    "Method": "DeleteOrderDetail",
-    "RelativePath": "api/OrderDetail",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "OrderDetailID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
     "ReturnTypes": []
   },
   {
@@ -429,6 +479,22 @@
   },
   {
     "ContainingType": "CoffeeShop_API.Controllers.OrderDetailController",
+    "Method": "DeleteOrderDetail",
+    "RelativePath": "api/OrderDetail/{OrderDetailID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "OrderDetailID",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.OrderDetailController",
     "Method": "GetOrderDetailByPK",
     "RelativePath": "api/OrderDetail/{OrderDetailID}",
     "HttpMethod": "GET",
@@ -451,22 +517,6 @@
     "IsController": true,
     "Order": 0,
     "Parameters": [],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CoffeeShop_API.Controllers.ProductController",
-    "Method": "DeleteProduct",
-    "RelativePath": "api/Product",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "ProductID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
     "ReturnTypes": []
   },
   {
@@ -496,6 +546,22 @@
       {
         "Name": "productModel",
         "Type": "CoffeeShop_API.Models.ProductModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.ProductController",
+    "Method": "DeleteProduct",
+    "RelativePath": "api/Product/{ProductID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "ProductID",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
@@ -562,7 +628,7 @@
   {
     "ContainingType": "CoffeeShop_API.Controllers.StateController",
     "Method": "DeleteState",
-    "RelativePath": "api/State",
+    "RelativePath": "api/State/{StateID}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -570,7 +636,7 @@
       {
         "Name": "StateID",
         "Type": "System.Int32",
-        "IsRequired": false
+        "IsRequired": true
       }
     ],
     "ReturnTypes": []
@@ -603,22 +669,6 @@
   },
   {
     "ContainingType": "CoffeeShop_API.Controllers.UserController",
-    "Method": "DeleteUser",
-    "RelativePath": "api/User",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "UserID",
-        "Type": "System.Int32",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CoffeeShop_API.Controllers.UserController",
     "Method": "InsertUser",
     "RelativePath": "api/User",
     "HttpMethod": "POST",
@@ -644,6 +694,22 @@
       {
         "Name": "user",
         "Type": "CoffeeShop_API.Models.UserModel",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CoffeeShop_API.Controllers.UserController",
+    "Method": "DeleteUser",
+    "RelativePath": "api/User/{UserID}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserID",
+        "Type": "System.Int32",
         "IsRequired": true
       }
     ],
