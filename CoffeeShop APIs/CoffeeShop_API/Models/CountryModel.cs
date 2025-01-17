@@ -7,5 +7,6 @@
         public String CountryCode { get; set; }
         public DateTime CreatedAt { get; set; }
         public DateTime ModifiedAt { get; set; }
+        public int StateCount { get; set; }
     }
 }

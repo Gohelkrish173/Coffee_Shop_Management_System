@@ -42,7 +42,7 @@ namespace Admin3.Controllers
                     HttpContext.Session.SetString("EmailAddress", dr["Email"].ToString());
                 }
 
-                return RedirectToAction("Index","Home");
+                return RedirectToAction("Index","Dashboard");
             }
             catch (Exception ex)
             {

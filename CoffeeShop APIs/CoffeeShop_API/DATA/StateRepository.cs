@@ -35,6 +35,7 @@ namespace CoffeeShop_API.DATA
                         CountryID = Convert.ToInt32(reader["CountryID"]),
                         StateName = reader["StateName"].ToString(),
                         StateCode = reader["StateCode"].ToString(),
+                        CityCount = Convert.ToInt32(reader["CityCount"])
                     });
                 }
                 return state;
