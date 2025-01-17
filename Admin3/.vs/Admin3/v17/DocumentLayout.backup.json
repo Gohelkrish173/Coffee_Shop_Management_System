@@ -3,20 +3,12 @@
   "WorkspaceRootPath": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\admin3\\views\\country\\countrytable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:views\\country\\countrytable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\admin3\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\admin3\\controllers\\countrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:controllers\\countrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\admin3\\views\\state\\statetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:views\\state\\statetable.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\admin3\\controllers\\citycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:controllers\\citycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\admin3\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{DF6B1665-97DE-4254-A944-52BA05702049}|Admin3.csproj|solutionrelative:controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -25,59 +17,33 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "DockedWidth": 250,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "StateTable.cshtml",
-              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Views\\State\\StateTable.cshtml",
-              "RelativeDocumentMoniker": "Views\\State\\StateTable.cshtml",
-              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Views\\State\\StateTable.cshtml",
-              "RelativeToolTip": "Views\\State\\StateTable.cshtml",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Views\\Dashboard\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Dashboard\\Index.cshtml",
+              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Views\\Dashboard\\Index.cshtml",
+              "RelativeToolTip": "Views\\Dashboard\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-14T17:43:08.807Z",
+              "WhenOpened": "2025-01-17T11:43:14.061Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CountryController.cs",
-              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Controllers\\CountryController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CountryController.cs",
-              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Controllers\\CountryController.cs",
-              "RelativeToolTip": "Controllers\\CountryController.cs",
-              "ViewState": "AgIAAGAAAAAAAAAAAAApwGcAAAANAAAAAAAAAA==",
+              "Title": "DashboardController.cs",
+              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Controllers\\DashboardController.cs",
+              "RelativeDocumentMoniker": "Controllers\\DashboardController.cs",
+              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Controllers\\DashboardController.cs",
+              "RelativeToolTip": "Controllers\\DashboardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGAAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:39:42.136Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "CountryTable.cshtml",
-              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Views\\Country\\CountryTable.cshtml",
-              "RelativeDocumentMoniker": "Views\\Country\\CountryTable.cshtml",
-              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Views\\Country\\CountryTable.cshtml",
-              "RelativeToolTip": "Views\\Country\\CountryTable.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACQAAAAlAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-12-14T17:39:10.515Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "CityController.cs",
-              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Controllers\\CityController.cs",
-              "RelativeDocumentMoniker": "Controllers\\CityController.cs",
-              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\Admin3\\Controllers\\CityController.cs",
-              "RelativeToolTip": "Controllers\\CityController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAhwDAAAAAIAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-14T17:25:19.514Z",
+              "WhenOpened": "2025-01-17T03:39:00.009Z",
               "EditorCaption": ""
             }
           ]

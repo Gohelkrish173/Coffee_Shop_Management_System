@@ -1,0 +1,160 @@
+﻿@model Admin3.Models.Dashboard;
+
+@{
+    ViewData["Title"] = "Display_Dashboard";
+}
+
+<div class="container mt-5">
+    <h1 class="text-center mb-4">Dashboard</h1>
+
+    <!-- Counts Section -->
+    <div class="row mb-4">
+        <!-- Recent Orders Section -->
+        <div class="col-6">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h4>Quick Links</h4>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Navigate to</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var link in Model.NavigationLinks)
+                            {
+                                <tr>
+                                    <td><a asp-action="@link.ActionMethodName" asp-controller="@link.ControllerName">@link.LinkName</a></td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+        </div>
+        <div class="col-6">
+            <div class="row">
+                <div class="card col-5 m-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Customers</h5><hr />
+                        <p class="card-text">@Model.Counts.FirstOrDefault(c => c.Metric == "TotalCustomers")?.Value</p>
+                    </div>
+                </div>
+
+                <div class="card col-5 m-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Products<hr /></h5>
+                        <p class="card-text">@Model.Counts.FirstOrDefault(c => c.Metric == "TotalProducts")?.Value</p>
+                    </div>
+                </div>
+
+                <div class="card col-5 m-2">
+                    <div class="card-body">
+                        <h5 class="card-title">Total Orders</h5><hr />
+                        <p class="card-text">@Model.Counts.FirstOrDefault(c => c.Metric == "TotalOrders")?.Value</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mb-4">
+    <!-- Recent Orders Section -->
+    <div class="container col-6">
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Recent 10 Orders</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Order ID</th>
+                            <th>Customer</th>
+                            <th>Order Date</th>
+                            <th>TotalAmount</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var order in Model.RecentOrders)
+                        {
+                            <tr>
+                                <td>@order.OrderID</td>
+                                <td>@order.CustomerName</td>
+                                <td>@order.OrderDate.ToString("yyyy-MM-dd")</td>
+                                <td>@order.TotalAmount</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container col-6">
+        <!-- Recent Products Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Recent 10 Products</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Product ID</th>
+                            <th>Product Name</th>
+                            <th>Product Code</th>
+                            <th>Product Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var product in Model.RecentProducts)
+                        {
+                            <tr>
+                                <td>@product.ProductID</td>
+                                <td>@product.ProductName</td>
+                                <td>@product.ProductCode</td>
+                                <td>@product.ProductPrice</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="container col-6">
+        <!-- Top Customers Section -->
+        <div class="card mb-4">
+            <div class="card-header">
+                <h4>Top 10 Customers by Orders</h4>
+            </div>
+            <div class="card-body">
+                <table class="table table-striped">
+                    <thead>
+                        <tr>
+                            <th>Customer</th>
+                            <th>Total Orders</th>
+                            <th>Email</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var customer in Model.TopCustomers)
+                        {
+                            <tr>
+                                <td>@customer.CustomerName</td>
+                                <td>@customer.TotalOrders</td>
+                                <td>@customer.Email</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+</div>
+
+<!-- Bootstrap JS (optional) -->

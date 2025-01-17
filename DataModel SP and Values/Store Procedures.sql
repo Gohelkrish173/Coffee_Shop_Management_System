@@ -537,7 +537,7 @@ AS
 BEGIN
     SELECT 
 		[dbo].[Product].[ProductID],
-		[dbo].[Product].[ProductName], 
+		[dbo].[Product].[ProductN0ame], 
 		[dbo].[Product].[ProductPrice], 
 		[dbo].[Product].[ProductCode], 
 		[dbo].[Product].[Description],
@@ -702,4 +702,109 @@ BEGIN
 	where [dbo].[Customer].[UserID] = @UserID
 END;
 
---38. Product select by pk of user
+--38. Create Dashboard
+Create Proc [dbo].[PR_DashBoard]
+@UserID int
+AS
+BEGIN
+    -- Enable NOCOUNT for better performance
+    SET NOCOUNT ON;
+-- SET NOCOUNT ON: Suppresses the message from being returned. This prevents the sending of DONEINPROC messages to the client for each
+-- statement in a stored procedure.
+-- SET NOCOUNT OFF: Includes the message in the result set. 
+    -- Temporary tables for organized data fetching
+	CREATE TABLE #Counts (
+        Metric NVARCHAR(255),
+        Value INT
+		);
+
+    CREATE TABLE #RecentOrders (
+        OrderID INT,
+        CustomerName Varchar(100),
+        OrderDate DATETIME,
+		TotalAmount	Decimal(10,2),
+    );
+
+    CREATE TABLE #RecentProducts (
+        ProductID INT,
+        ProductName VARCHAR(100),
+        ProductCode VARCHAR(100),
+		ProductPrice decimal(10,2),
+    );
+
+    CREATE TABLE #RecentCustomers (
+        CustomerName VARCHAR(100),
+		TotalOrders int,
+        Email VARCHAR(100)
+    );
+
+    ---- Step 1: Get Counts
+    --
+	INSERT INTO #Counts
+        SELECT 'TotalCustomers', COUNT(*) FROM Customer where UserID = @UserID
+    INSERT INTO #Counts
+	    SELECT 'TotalProducts', COUNT(*) FROM Product where UserID = @UserID
+	INSERT INTO #Counts
+		SELECT 'TotalOrders',COUNT(*) FROM Orders where UserID = @UserID
+	INSERT INTO #Counts
+		SELECT 'TotalBills',COUNT(*) FROM Bill where UserID = @UserID
+		
+    --    (SELECT COUNT(*) FROM Customers) AS TotalCustomers,
+    --    (SELECT COUNT(*) FROM Products) AS TotalProducts,
+    --    (SELECT COUNT(*) FROM Orders) AS TotalOrders,
+    --    (SELECT COUNT(*) FROM Bills) AS TotalBills;
+
+    -- Step 2: Get Recent 10 Orders
+    INSERT INTO #RecentOrders
+    SELECT TOP 10
+        O.OrderID,
+        C.CustomerName,
+        O.OrderDate,
+		O.TotalAmount
+    FROM Orders O
+    INNER JOIN Customer C ON O.CustomerID = C.CustomerID
+	where O.UserID = @UserID
+    ORDER BY O.OrderDate DESC;
+
+    -- Step 3: Get Recent 10 Newly Added Products
+    INSERT INTO #RecentProducts
+    SELECT TOP 10
+        ProductID,
+        ProductName,
+		ProductCode,
+		ProductPrice
+    FROM Product
+	where UserID = @UserID
+    ORDER BY ProductPrice DESC;
+
+    -- Step 4: Get Top 10 Customers by Order Count
+    INSERT INTO #RecentCustomers
+    SELECT TOP 10
+        C.CustomerName,
+        COUNT(O.OrderID) AS TotalOrders,
+        C.Email
+    FROM Orders O
+    INNER JOIN Customer C ON O.CustomerID = C.CustomerID
+    where C.UserID = @UserID
+	GROUP BY C.CustomerName, C.Email
+    ORDER BY COUNT(O.OrderID) DESC;
+
+    -- Output Results
+    -- Output Counts
+    SELECT * FROM #Counts;
+
+    -- Output Recent Orders
+    SELECT * FROM #RecentOrders;
+
+    -- Output Recent Products
+    SELECT * FROM #RecentProducts;
+
+    -- Output Top Customers
+    SELECT * FROM #RecentCustomers;
+
+
+    -- Cleanup Temporary Tables
+    DROP TABLE #RecentOrders;
+    DROP TABLE #RecentProducts;
+    DROP TABLE #RecentCustomers;
+End

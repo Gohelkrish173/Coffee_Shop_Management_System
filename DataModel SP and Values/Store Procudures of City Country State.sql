@@ -105,7 +105,7 @@ End
 
 -----------------------------------------------------
 
-Create PROC [dbo].[PR_LOC_Country_SelectAll]
+Alter PROC [dbo].[PR_LOC_Country_SelectAll]
 AS 
 Begin
 SELECT
@@ -113,8 +113,16 @@ SELECT
 		[dbo].[Country].[CountryName],
 		[dbo].[Country].[CountryCode],
 		[dbo].[Country].[CreatedDate],
-		[dbo].[Country].[ModifiedDate]	
+		[dbo].[Country].[ModifiedDate],
+		COUNT([dbo].[State].[StateID]) as StateCount
 FROM [dbo].[Country]
+Left outer join [dbo].[State] on [dbo].[State].[CountryID] = [dbo].[Country].[CountryID]
+Group By
+		[dbo].[Country].CountryID,
+		[dbo].[Country].[CountryName],
+		[dbo].[Country].[CountryCode],
+		[dbo].[Country].[CreatedDate],
+		[dbo].[Country].[ModifiedDate] 
 End
 
 Create PROC [dbo].[PR_LOC_Country_SelectByPK]
@@ -164,7 +172,7 @@ END
 
 --------------------------------------------------------
 
-Create PROC [dbo].[PR_LOC_State_SelectAll]
+ALter PROC [dbo].[PR_LOC_State_SelectAll]
 AS 
 Begin
 SELECT
@@ -174,9 +182,19 @@ SELECT
 		[dbo].[State].[CountryID],
 		C.[CountryName],
 		[dbo].[State].[CreatedDate],
-		[dbo].[State].[ModifiedDate]	
+		[dbo].[State].[ModifiedDate],
+		COUNT(CI.[StateID]) as CityCount		
 FROM [dbo].[State]
 Left Outer join Country as C on C.CountryID = [dbo].[State].[CountryID]
+Left Outer join City as CI on CI.StateID = [dbo].[State].[StateID]
+GROUP BY	
+        [dbo].[State].[StateID],
+        [dbo].[State].[StateName],
+        [dbo].[State].[StateCode],
+        [dbo].[State].[CountryID],
+        C.[CountryName],
+        [dbo].[State].[CreatedDate],
+        [dbo].[State].[ModifiedDate];
 End
 
 Create PROC [dbo].[PR_LOC_State_SelectPK]
