@@ -27,6 +27,7 @@
             <th scope="col">State Name</th>
             <th scope="col">State Code</th>
             <th scope="col">Country Name</th>
+            <th scope="col">CityCount</th>
             <th class="text-center">Actions</th>
         </tr>
     </thead>
@@ -37,6 +38,7 @@
                 <td>@row["StateName"]</td>
                 <td>@row["StateCode"]</td>
                 <td>@row["CountryName"]</td>
+                <td>@row["CityCount"]</td>
                 <td class="text-center">
                     <a class="btn btn-outline-success btn-xs" asp-controller="State" asp-action="StateAddEdit" asp-route-StateID="@UrlEncryptor.Encrypt(row["StateID"].ToString())">
                         <i class="bi bi-pencil-fill"></i>

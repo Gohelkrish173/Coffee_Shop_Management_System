@@ -160,5 +160,14 @@ namespace Admin3.Controllers
             }
         }
         #endregion
+
+        #region AjaxGet
+        [HttpGet]
+        public DataTable GetAll()
+        {
+            return RetriveTable("PR_LOC_Country_SelectAll");
+        }
+        #endregion
+
     }
 }
