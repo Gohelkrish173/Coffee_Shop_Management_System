@@ -12,5 +12,6 @@ namespace Admin3.Models
         public String StateCode { get; set; }
         [Required]
         public int CountryID { get; set; }
+        public int? CityCount { get; set; }
     }
 }

@@ -7,14 +7,6 @@
       "RelativeMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|solutionrelative:data\\staterepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\coffeeshop apis\\coffeeshop_api\\data\\countryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|solutionrelative:data\\countryrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\coffeeshop apis\\coffeeshop_api\\models\\countrymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|solutionrelative:models\\countrymodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|d:\\semester wise college work\\sem-5 (c.s.e)\\.net\\maincoffeeproject\\coffeeshop apis\\coffeeshop_api\\controllers\\countrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2F81565B-E1C1-4179-AFD5-C74D141417B8}|CoffeeShop_API.csproj|solutionrelative:controllers\\countrycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
@@ -26,35 +18,11 @@
       "DocumentGroups": [
         {
           "DockedWidth": 250,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "CountryRepository.cs",
-              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\DATA\\CountryRepository.cs",
-              "RelativeDocumentMoniker": "DATA\\CountryRepository.cs",
-              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\DATA\\CountryRepository.cs",
-              "RelativeToolTip": "DATA\\CountryRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAABKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T04:04:06.202Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "CountryModel.cs",
-              "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\Models\\CountryModel.cs",
-              "RelativeDocumentMoniker": "Models\\CountryModel.cs",
-              "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\Models\\CountryModel.cs",
-              "RelativeToolTip": "Models\\CountryModel.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAFAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-12-27T04:03:41.278Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
               "Title": "CountryController.cs",
               "DocumentMoniker": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\Controllers\\CountryController.cs",
               "RelativeDocumentMoniker": "Controllers\\CountryController.cs",
@@ -72,7 +40,7 @@
               "RelativeDocumentMoniker": "DATA\\StateRepository.cs",
               "ToolTip": "D:\\Semester Wise College Work\\Sem-5 (C.S.E)\\.Net\\MainCoffeeProject\\CoffeeShop APIs\\CoffeeShop_API\\DATA\\StateRepository.cs",
               "RelativeToolTip": "DATA\\StateRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAA1AAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-27T03:53:33.927Z",
               "EditorCaption": ""
